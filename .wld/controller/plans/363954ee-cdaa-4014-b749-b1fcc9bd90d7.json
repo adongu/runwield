@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planName": "package-manager-distribution",
+    "planId": "363954ee-cdaa-4014-b749-b1fcc9bd90d7",
+    "state": {
+        "updatedAt": "2026-09-16T03:55:16.220Z",
+        "validationCheckpoint": null,
+        "validatedAt": "2026-09-16T03:55:16.220Z"
+    }
+}

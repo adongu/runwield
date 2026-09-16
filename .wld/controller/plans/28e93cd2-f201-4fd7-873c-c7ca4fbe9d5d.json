@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 28,
+    "planName": "acp-v1-conformance-hardening",
+    "planId": "28e93cd2-f201-4fd7-873c-c7ca4fbe9d5d",
+    "state": {
+        "updatedAt": "2026-09-05T03:42:42.600Z",
+        "documentWorktreeId": "357e9ad6",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 3,
+        "implementedAt": "2026-09-04T04:33:50.247Z",
+        "executionReport": "- Implemented ACP hardening: SDK is locked at `@agentclientprotocol/sdk` 1.4.0, `initialize` always returns protocol version `1`, ACP reports generated `VERSION`, cumulative USD `usage_update.cost`, and cancellation now waits for Runtime settlement plus pending updates.\n- Updated ACP Session state: prompt records no longer own cancellation promises; `AcpSessionMap` now owns cumulative Session cost that survives Runtime replacement and is dropped on close.\n- Added schema and lifecycle coverage: +16 `Deno.test` tests, 0 removed; new tests cover SDK 1.4.0 schema facts, serialized ACP frames, negotiation, version proof, cumulative/replay cost, cancellation ordering, Session-map cost state, and interaction mapping.\n- Fixed CI-only workspace review test timing by waiting for the final cumulative usage frame before asserting job usage.\n- Updated ACP docs and PRD to show the closed hardening gaps and to keep out-of-scope limits: HTTP/SSE MCP, MCP prompts/resources, optional Session methods, exact context capacity, and ACP v2.\n- Verification passed: focused ACP/MCP suite; `deno task seams:check`; `deno task check`; `deno task ci`; and final `deno task test` (`382 files passed, 0 failed`).\n- Manual negotiation check passed: `initialize` with `protocolVersion: 99` through `deno run -A src/cli.ts --mode acp` returned `protocolVersion: 1`.",
+        "validatedAt": "2026-09-05T03:42:31.690Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "2b3f22a3bcbf7a7551493f31387be3d9439ab134",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "d7b715d36d723799cbda15bb7698b853d19ae848"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 16,
+    "planName": "consolidate-project-runtime-state/01-add-runtime-layout-contract",
+    "planId": "c6e653ec-2b3b-43c3-ad8a-107015520e9f",
+    "state": {
+        "updatedAt": "2026-09-08T04:07:33.138Z",
+        "documentWorktreeId": "a45416fd",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-08T01:52:49.795Z",
+        "executionReport": "- Added `PROJECT_INTERNAL_RUNTIME_DIR_NAME = \"internal\"` while keeping `getRunWieldRuntimeDir()` unchanged.\n- Added `resolveProjectRuntimeLayout()` with named primary and selected `.wld/internal` paths; it resolves primary ownership through `resolvePrimaryCheckoutRoot()` and keeps selected checkout state separate.\n- Split runtime path classification into current `.wld/internal`, bounded legacy hazards, and the temporary aggregate Git-safety classifier/pathspec/gitignore exports.\n- Kept `.wld/settings.json`, `.wld/agents/**`, `.wld/skills/**`, `.wld/prompts/**`, and `.wld/prompt-templates/**` outside all runtime classifiers.\n- Updated the domain glossary with the four runtime layout terms without claiming migration or writer cutover is active.\n- Tests changed: replaced 1 old owned-path predicate test with 3 classifier/Git-safety tests, added 2 runtime-layout tests, and added 1 constants test; no covered behavior was deleted, the old predicate coverage was rewritten for the new current/legacy/aggregate contract.\n- Verification passed: `deno run -A scripts/run-tests.js src/shared/project-runtime-layout.test.ts src/shared/runwield-owned-paths.test.js src/constants.test.js`, `deno task seams:check`, and `deno task ci`.",
+        "validatedAt": "2026-09-08T04:07:33.138Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "3e5216c805374123e01f79b6e4e8b51de149e1bc",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "1baba5d1a96ce9771e0ea791e25db11cbf9ccbf7"
+        }
+    }
+}

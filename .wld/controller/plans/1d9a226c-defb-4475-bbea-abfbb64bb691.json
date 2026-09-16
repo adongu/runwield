@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 38,
+    "planName": "personal-remote-workspace-v2/03-plan-centered-workspace-home-and-navigation",
+    "planId": "1d9a226c-defb-4475-bbea-abfbb64bb691",
+    "state": {
+        "updatedAt": "2026-09-11T17:13:14.064Z",
+        "documentWorktreeId": "95a234f6",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "always",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-11T17:01:07.432Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 4,
+        "implementedAt": "2026-09-10T21:40:42.644Z",
+        "executionReport": "- Fixed Dashboard → Plan home links and dynamic Back: Dashboard-opened Plans use `?from=dashboard` and return to the Attention Dashboard.\n- Reworked Plan home to reuse the existing read-only artifact reader, with a styled Plan workflow sidebar; no duplicate front matter/metadata screen.\n- Kept standalone progress HTML removed; `/projects/dev/plans/example/progress` returns 404 while progress JSON remains tested.\n- Converted new owner Dashboard server module to TypeScript and fixed CI language/type/lint failures.\n- Tests: added 2 workflow-presentation tests; removed 0 tests; updated existing tests for new routes/progress behavior.\n- Verification passed: `deno task ci`; focused planned test sets; `deno task workspace:check`; `deno task seams:check`.\n- Browser checked `http://127.0.0.1:5173/dev/owner-dashboard` and `http://127.0.0.1:5173/projects/dev/plans/example?from=dashboard` in headed session `rw03-95a`; no horizontal overflow; Plan workflow cards styled; Back returns to Dashboard.\n- Visible evidence: `artifacts/plan03-final-plan-home.png` and `artifacts/plan03-plan-home-workflow-styled-fixed.png`.\n- Browser diagnostics: app requests were OK; one dev-only Astro toolbar request returned 504 during dev-server use.",
+        "validatedAt": "2026-09-11T17:01:17.423Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "ae09ccaaa23fac288537d395ed5c9d2d4a13685d",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "9cac6bcb7bd05dda1a2b06cbacab99f3eb944ea2"
+        }
+    }
+}

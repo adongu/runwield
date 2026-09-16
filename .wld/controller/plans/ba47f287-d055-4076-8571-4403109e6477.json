@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "ba47f287-d055-4076-8571-4403109e6477",
+    "planName": "archived/personal-remote-workspace-v1/01-align-personal-workspace-prds-with-adr-011",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:47.295Z",
+        "implementedAt": "2026-07-22T13:39:39.646Z",
+        "verifiedAt": "2026-07-22T14:00:14.318Z",
+        "executionReport": "- Updated `docs/prd/runwield-workspace-prd.md` to replace central live-host/Session Control language with stable Session identity, fenced Session Activation Leases, Durable Workflow Checkpoints, automatic read synchronization, owner coordination DB boundaries, TLS/Origin/CSRF trust notes, and ADR-011 references.\n- Updated `docs/prd/runwield-core-prd.md` to mark `SessionHost`/`HostedSession`, `SessionRuntime`, ACP, Work Records, and Shared Plan lifecycle as current foundations, and to define the next ADR-011 coordination requirements below sibling adapters.\n- Updated `docs/prd/runwield-acp-session-host-PRD.md` so ACP durable `sessionId` maps to stable RunWield Sessions, load/mutation paths are activation-aware, checkpoint/recovery behavior is idempotent, and Workspace remains a sibling Runtime consumer rather than an ACP child or parent.\n- Verification passed: `deno fmt docs/prd/runwield-workspace-prd.md docs/prd/runwield-core-prd.md docs/prd/runwield-acp-session-host-PRD.md`; `deno fmt --check ...`; `git diff --check -- ...`; `deno task ci`.\n- Text audits passed: no remaining `Session Control` references and no remaining central authoritative Session Host claims in the three PRDs.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped"
+    }
+}

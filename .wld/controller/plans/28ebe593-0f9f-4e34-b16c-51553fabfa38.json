@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 36,
+    "planName": "package-manager-distribution/02-windows-winget-readiness",
+    "planId": "28ebe593-0f9f-4e34-b16c-51553fabfa38",
+    "state": {
+        "updatedAt": "2026-09-16T04:05:11.285Z",
+        "documentWorktreeId": "2a8d60a2",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "always",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-16T03:55:05.606Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 5,
+        "implementedAt": "2026-09-12T04:44:55.575Z",
+        "executionReport": "- Implemented Windows-safe test isolation: runner now uses native file paths, HOME/USERPROFILE/AppData sandboxes, and portable process-global lock temp roots.\n- Implemented WinGet-owned runtime behavior: package metadata resolves through command links, relative install dirs resolve beside metadata, bundled helpers are exposed only to this process/children, Windows home fallback works, and loose Windows updates do not run Bash.\n- Added Windows package and WinGet tooling: pinned helper inventory, `package:windows`, `package:windows:check`, `package:winget`, ZIP/checksum/metadata output, helper-byte verification, required file checks, and Stable-only manifest generation.\n- Updated release workflow: Windows ZIP assets are built, native Windows package checks gate publication, ZIP/json assets publish, and Stable releases render downloadable WinGet manifests.\n- Updated docs: added `docs/winget-first-release.md`; updated release, quickstart, troubleshooting, and Core PRD Windows install/update requirements.\n- Tests changed: added 11 tests, removed 0; covered package ZIP creation/failure cases, WinGet manifest generation/failure cases, package helper lookup/PATH behavior, and Windows foreground-process cancellation/status coverage.\n- Verification passed: `deno run -A scripts/run-tests.js --isolated ...` for the approved package/update/process/session/ACP/Workspace/publication/artifact tests passed (13 files).\n- Verification passed: `deno task ci` passed (373 files). Also built a Windows exe locally and generated a test Windows package plus test-only WinGet manifests from served ZIP bytes.\n- Native `package:windows:check` was implemented and wired for `windows-latest`; it was not run locally because this host is not Windows.",
+        "validatedAt": "2026-09-16T03:55:15.919Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "f728be82015d4a0b47b135f3dd06ef54545bd84f",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "a8605575ab5598f975aac3223f29c6cd982ad4af"
+        }
+    }
+}

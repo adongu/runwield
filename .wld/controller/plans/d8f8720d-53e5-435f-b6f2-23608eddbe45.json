@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "d8f8720d-53e5-435f-b6f2-23608eddbe45",
+    "planName": "archived/personal-remote-workspace-v1/10-transactional-segment-rollover-primitives",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:47.295Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-08-12T15:03:31.839Z",
+        "verifiedAt": "2026-08-12T15:20:47.703Z",
+        "executionReport": "- Implemented transactional rollover primitives: split segment seal/append internals, added `commitSegmentRolloverAndPublish`, exported store APIs, and added `rollSessionTranscriptSegment` orchestration with opaque continuation persistence.\n- Updated managed Session metadata/runtime handling with `currentSegmentId`, atomic transcript segment replacement, post-rollover evidence verification against the generation-named segment, and stale segment acquisition mapped to `refresh_required`.\n- Added orphan rollover candidate discovery/discard and glossary entries for **Session Transcript Segment Rollover** and **Orphan Rollover Candidate**.\n- Added/updated tests: +9 tests total, 0 removed; new coverage includes commit rollback, stale/wrong proofs, degraded unpublished-successor reader state, manifest `ordinal > current` guard, consecutive rollovers, metadata rollover, and orphan discard.\n- Verification passed: `deno task ci` (281 files passed, 0 failed); targeted rollover/manifest/runtime suites also passed.\n- Manual TUI/kill checks were not run because this slice exposes backend primitives only and no user-facing fixture command exists yet; the same behaviors were covered with real-session automated fixtures.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "abb759f2275873b9128aba66eb12633d941689a4",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "becea3e9c7bc36442ed18b654b0cf3b637c4d912"
+        }
+    }
+}

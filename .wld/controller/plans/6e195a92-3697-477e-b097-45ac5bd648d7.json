@@ -1,0 +1,124 @@
+{
+    "version": 1,
+    "revision": 31,
+    "planName": "consolidate-project-runtime-state/07-enforce-git-and-publication-safety",
+    "planId": "6e195a92-3697-477e-b097-45ac5bd648d7",
+    "state": {
+        "updatedAt": "2026-09-16T04:03:05.129Z",
+        "documentWorktreeId": "09f88c82",
+        "executionMode": "worktree",
+        "validationCheckpoint": {
+            "version": 1,
+            "attemptId": "09f88c82",
+            "generation": "e75b26a8-799f-48fa-8487-9142ab8fff3d",
+            "expectedStatus": "implemented",
+            "nextPhase": "mechanical",
+            "state": "running",
+            "ownerPid": 15262,
+            "ownerHostname": "gandazgul-mbp",
+            "repairKind": "semantic",
+            "repairGeneration": "7060a2e3-e934-463c-aeb6-8685b0331e2c",
+            "repairCompletedOperationId": "7060a2e3-e934-463c-aeb6-8685b0331e2c",
+            "lastSettledOperationId": "48ad6b43-e84f-4894-a7f0-597065f043ad",
+            "reviewState": {
+                "semanticRound": 3,
+                "reviewLedger": {
+                    "items": [
+                        {
+                            "id": "R1-1",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "Repeated reconciliation preserves content after an unmatched start marker.",
+                            "requirement": "Unmatched markers must produce a non-destructive diagnostic. Reconciliation must preserve unrelated content and be idempotent.",
+                            "evidence": "reconcileGitignore() stops its end-marker search at the next start marker. The updated test checks the second reconciliation."
+                        },
+                        {
+                            "id": "R1-2",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "Obsolete-rule removal now uses exact line matching.",
+                            "requirement": "Remove only exact obsolete RunWield lines. Keep unrelated custom patterns byte-equivalent.",
+                            "evidence": "isObsoleteRunWieldLine() no longer trims or normalizes the line. Tests preserve leading-space and rooted custom patterns."
+                        },
+                        {
+                            "id": "R1-3",
+                            "openedInRound": 1,
+                            "resolvedInRound": 3,
+                            "title": "Resumed local merges now check incoming history before continuing.",
+                            "requirement": "Saved-attempt and repair paths must reject runtime hazards before advancing the target.",
+                            "evidence": "worktree.js checks MERGE_HEAD history before merge --continue in both mergeExecutionWorktreeIntoCurrentCheckout() and resolvePlanMergeConflicts(). Both paths also check HEAD and the index."
+                        },
+                        {
+                            "id": "R1-4",
+                            "openedInRound": 1,
+                            "resolvedInRound": 3,
+                            "title": "Saved publication copies now check HEAD and the index before automatic merges.",
+                            "requirement": "Check incoming history and HEAD/index safety before automatic merges and commits.",
+                            "evidence": "isolated-publication.ts: the requestedRootExists branch calls assertNoTrackedOrIndexedRuntimePaths(publicationRoot) before target synchronization or execution merges."
+                        },
+                        {
+                            "id": "R1-5",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "The reported runtime-refusal paths now preserve repair and publication checkouts.",
+                            "requirement": "Refusal must preserve execution and repair checkouts and permit retry after authorized cleanup.",
+                            "evidence": "publishRepairedMergeWorktree() checks history outside the cleanup catch. Isolated publication sets preserveForRecovery before final metadata and history checks."
+                        },
+                        {
+                            "id": "R1-6",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "Missing-remote publication now checks the full candidate history.",
+                            "requirement": "Inspect every commit newly reachable from the intended publication target.",
+                            "evidence": "Both remote publication paths use a null publicationHistoryBase when the remote target is absent. The history helper then runs rev-list without --not."
+                        },
+                        {
+                            "id": "R1-7",
+                            "openedInRound": 1,
+                            "resolvedInRound": 3,
+                            "title": "The reported runtime refusals now reach the cleanup pause.",
+                            "requirement": "Runtime refusal must report blocking paths through the recoverable cleanup and retry flow.",
+                            "evidence": "validation-publication.ts catches and normalizes dispatchMergeRepair() errors. Both target-sync catches in isolated-publication.ts preserve the runtime failure kind and blockingPaths. publishRepairedMergeWorktree() also preserves these fields."
+                        },
+                        {
+                            "id": "R1-8",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "Secret runtime errors now include exposure and rotation warnings.",
+                            "requirement": "A tracked secret must also carry the existing exposure and capability-rotation warning.",
+                            "evidence": "RunWieldRuntimeGitSafetyError checks current and legacy collaboration-secret paths, including temporary suffixes, and adds the exposure and capability-rotation warning."
+                        },
+                        {
+                            "id": "R1-9",
+                            "openedInRound": 1,
+                            "resolvedInRound": 2,
+                            "title": "The reported dirty-path reads now preserve NUL-delimited filenames.",
+                            "requirement": "Use NUL-delimited path output without trimming filenames, and preserve exact paths in dirty-path protection.",
+                            "evidence": "publishToLocalTarget() uses runGitRaw(). Dirty-overlap checks use -z branch diffs, parseNulPaths(), and gitStatusPaths(); worktree.js runGit() preserves raw stdout."
+                        },
+                        {
+                            "id": "R1-10",
+                            "openedInRound": 1,
+                            "resolvedInRound": null,
+                            "title": "Merged side-branch and unsafe completed-repair test cases remain missing.",
+                            "requirement": "Step 7 requires real Git tests for incoming side-branch history and unsafe saved or completed repairs, including runtime data committed and later deleted.",
+                            "evidence": "The repair adds preparation refusal, saved-checkout HEAD refusal, index-entry preservation, and partially staged content preservation. However, worktree-runtime-state-isolation.test.js and isolated-publication.test.ts still lack a candidate with runtime history from a merged side branch. validation-merge-repair.test.ts tests an unfinished merge with MERGE_HEAD, not an unsafe completed repair. The saved-publication test retains runtime data in HEAD; it does not test saved or completed repair history where runtime data was later deleted."
+                        }
+                    ],
+                    "sequence": 10
+                },
+                "repairBaselineTree": "e839c31780cb8bcbfa92057756585f82a8570517",
+                "lastRepairReport": "- R1-10 — already satisfied: real-Git tests now cover merged side-branch runtime history in `worktree-runtime-state-isolation.test.js` and `isolated-publication.test.ts`, plus deleted runtime history in saved publication and completed merge repair tests. Four relevant cases added; none removed or replaced.\n- Verification — focused 27 tests passed; `deno task test` passed: 375 files, 0 failed."
+            },
+            "updatedAt": "2026-09-16T04:03:05.118Z"
+        },
+        "humanReviewMode": null,
+        "humanReviewDecision": null,
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-15T01:51:27.836Z",
+        "executionReport": "- Implemented one canonical `.gitignore` block for `.wld/internal/`, duplicate/obsolete cleanup, idempotent reconciliation, broad-rule warnings, and entry/execution checkout reconciliation.\n- Added Git runtime safety checks for current and legacy runtime paths in HEAD, index, intent-to-add, deletions, renames, staging, checkpoints, publication metadata, merge repair, and local/remote publication history.\n- Preserved user `.wld/settings.json`, `.wld/agents/**`, `.wld/skills/**`, and `.wld/prompts/**` as eligible changes while excluding runtime data.\n- Updated Core PRD work-protection text for delivered Git safety and preserved user configuration.\n- Tests changed: +11 `Deno.test`, -1 `Deno.test`; removed `previously committed runtime state is removed before merge` because that cleanup behavior no longer exists and is replaced by runtime-history refusal coverage.\n- Verified with targeted runner: `deno run -A scripts/run-tests.js src/shared/runwield-owned-paths.test.js src/shared/project-runtime-layout.test.ts src/shared/worktree-runtime-state-isolation.test.js src/shared/worktree-merge.test.js src/shared/workflow/execution-progress.test.ts src/shared/workflow/validation-publication.test.ts src/shared/isolated-publication.test.ts src/shared/workflow/publication-machine.e2e.test.ts src/shared/workflow/validation-merge-repair.test.ts` — 93 passed.\n- Verified `deno task seams:check` — passed.\n- Verified `deno task ci` — passed, including 375 test files.\n- Manual disposable Git check: reconcile old block twice was changed then idempotent; forced staged `.wld/internal/future/state.json` caused `RunWieldRuntimeGitSafetyError` and preserved staged user config plus runtime bytes.",
+        "failureReason": "- R1-10 — Merged side-branch and unsafe completed-repair test cases remain missing.\n  Plan: Step 7 requires real Git tests for incoming side-branch history and unsafe saved or completed repairs, including runtime data committed and later deleted.\n  Evidence: The repair adds preparation refusal, saved-checkout HEAD refusal, index-entry preservation, and partially staged content preservation. However, worktree-runtime-state-isolation.test.js and isolated-publication.test.ts still lack a candidate with runtime history from a merged side branch. validation-merge-repair.test.ts tests an unfinished merge with MERGE_HEAD, not an unsafe completed repair. The saved-publication test retains runtime data in HEAD; it does not test saved or completed repair history where runtime data was later deleted."
+    }
+}

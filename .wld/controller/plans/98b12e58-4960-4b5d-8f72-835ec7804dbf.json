@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 29,
+    "planName": "personal-remote-workspace-v2/01-durable-plan-to-session-continuity",
+    "planId": "98b12e58-4960-4b5d-8f72-835ec7804dbf",
+    "state": {
+        "updatedAt": "2026-09-04T03:41:48.840Z",
+        "documentWorktreeId": "e369ebdf",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 3,
+        "implementedAt": "2026-09-03T21:20:10.211Z",
+        "executionReport": "- Implemented durable Plan Association evidence: new `runwield.plan_association` transcript entries, manifest `planAssociations` projection, publish-time generation stamping, pending-entry cleanup, projection parsing, and strict HostedSession write behavior.\n- Added shared Plan-to-Session lookup and adoption verification; `wld load-plan` now resolves durable `planId` arguments and can adopt one safe idle planning Session before continuing the Plan flow.\n- Added Workspace owner API `GET /api/owner/projects/:projectId/plans/:planId/sessions`, returning browser-safe Session candidates without transcript paths.\n- Wired association recording for planning, review, execution, Slicer, semantic repair, and `plan_written` paths where a managed writer capability exists.\n- Updated domain language docs for Plan Association, Association Purpose, and Session Manifest projection authority.\n- Tests changed: added 11 tests; removed 0 tests; replaced 0 tests. New tests cover normalizing associations, transcript projection, HostedSession write/reject behavior, manifest publish/release behavior, lookup ignoring raw uncommitted tails, and planId Plan resolution.\n- Verification passed: `deno run -A scripts/run-tests.js src/shared/session/plan-association.test.ts src/shared/session/plan-session-lookup.test.ts src/shared/session/session-transcript-projection.test.js src/shared/session/hosted-session.test.js src/shared/session/file-session-store.test.js src/cmd/load-plan/primary-plan-recovery.test.ts`.\n- Verification passed: `deno run -A scripts/run-tests.js src/cmd/load-plan/index.integration.test.ts`.\n- Verification passed: `deno run -A scripts/run-tests.js` on the previously failing runtime/workflow boundary files.\n- Verification passed: `deno task check`, `deno task lint`, `deno task seams:check`, and full `deno task ci` (`352 files passed | 0 failed`).",
+        "validatedAt": "2026-09-04T03:41:48.840Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "4b344f0b8e9fc9969ad260a5af6d94805d3ca5b9",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "6c6873e7e43d86ca0ee84b1ce097e702dc7f31d4"
+        }
+    }
+}

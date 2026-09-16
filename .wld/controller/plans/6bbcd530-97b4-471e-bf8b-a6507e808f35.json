@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 43,
+    "planName": "fix-project-vision-fallback-submission",
+    "planId": "6bbcd530-97b4-471e-bf8b-a6507e808f35",
+    "state": {
+        "updatedAt": "2026-09-15T01:50:57.722Z",
+        "documentWorktreeId": "62d4278b",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "always",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-15T01:50:56.492Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-09-13T04:55:56.834Z",
+        "executionReport": "- Implemented Project-root explicit, lazy `visionFallback` resolution; text-only startup no longer validates unused fallback, while `see_image`, prompt send, TUI Send, Workspace create/continue, and steering validate at image use.\n- Added Runtime preflight for actual destination model selection and kept defensive prompt-time validation before user events/transcript writes.\n- Updated Workspace/TUI retention paths: image setup rejection returns 422, does not autoqueue as conflict, preserves draft text/previews, and removes rejected optimistic new-session messages.\n- Updated docs/PRDs for Project-scoped lazy fallback and failed image-send draft retention; restored the missing `docs/reports/core-prd-gap-audit.md` target needed by existing Plan links.\n- Tests: net +1 automated test; rewrote the old “invalid fallback fails startup” test because that behavior no longer exists, and changed the old image-first optimistic event test to text-first because image first turns now wait for validation.\n- Verification passed: focused Verification Plan test groups, `deno task check`, `deno task seams:check`, and full `deno task ci`.\n- Browser check: dev server ran at `http://127.0.0.1:5175/dev` because 5173 was busy; headed `agent-browser` session `vision-62d` checked Session fixture at 1440×1000 and 390×844, composer/image controls visible, no page errors, no 400–599 fetch/XHR requests captured; screenshot command timed out, so evidence is snapshots/console/network output only.",
+        "validatedAt": "2026-09-15T01:50:57.722Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "b87c2c3a125716940fb412e1796c178a39ff84a9",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "ec0194e0c797c9617b214065009521b1ef776b2c"
+        }
+    }
+}

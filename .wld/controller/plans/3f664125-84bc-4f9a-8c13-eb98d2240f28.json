@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 28,
+    "planName": "agy-cli-execution-backend/06-surface-agy-cli-selection-and-caveats",
+    "planId": "3f664125-84bc-4f9a-8c13-eb98d2240f28",
+    "state": {
+        "updatedAt": "2026-09-08T04:08:12.328Z",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "documentWorktreeId": "828f521e",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-07T21:54:57.777Z",
+        "executionReport": "- Implemented the Agy CLI surface: only `agy-cli/gemini-3.8-flash` and `agy-cli/gemini-3.1-pro` are selectable, configured/live discovery no longer invents Agy models, and unsupported Agy IDs fail before backend launch or global-file side effects.\n- Implemented Agy execution mapping: RunWield thinking maps to `--effort`, `agy` receives `--model <base>` and `--effort <mapped>`, concrete returned models are verified, and committed backend facts now include thinking, effort, and backend model evidence.\n- Updated TUI, onboarding, Workspace, dev fixtures, and PRDs to show the supported Agy models, Antigravity CLI setup path, committed Session backend facts, and replay caveats.\n- Updated tests: net `Deno.test` delta is +7 (18 added, 11 removed/reworked). Removed tests were replaced by stricter supported-model equivalents: explicit free-form Agy selection tests, parser-accepted arbitrary selector tests, generated catalog tests, old TUI selector copy, and the resume arbitrary-ID test now cover only approved base models; the old declined-MCP/setup and typed-backend tests were rewritten against approved Agy selection behavior.\n- Verification passed: `deno task ci` completed with 361 test files passed and 0 failed.",
+        "validatedAt": "2026-09-08T04:08:12.328Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "c84f20d6fd00049add92f5bce7627c891e0d26bd",
+            "targetBranch": "feature/agy-cli-execution-backend",
+            "targetHeadBeforeMerge": "4a728ca93cad32b6625c67e6d3edcaffa190f00f"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "9c81e9a0-c2f4-47eb-ae13-285d3ae04c42",
+    "planName": "archived/archive-epic-with-child-plans",
+    "state": {
+        "updatedAt": "2026-08-10T00:10:45.927Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-08-09T19:42:11.786Z",
+        "verifiedAt": "2026-08-10T00:08:03.613Z",
+        "executionReport": "- Implemented `Archive Epic` for terminal Epics, gated by exported archive-status predicates in `src/plan-store.js`.\n- Added `archiveEpicWithChildren`: child-first transactional archives, pre-flight recoverable-worktree block, confirmation with child summary and unfinished count, non-recursive active child-dir cleanup, and success restore guidance.\n- Added +2 integration tests; removed/replaced 0 tests. Mutation check proved the new menu-offer test fails when `archive_epic` is not offered, then restored the implementation.\n- Fixed a broken archived-doc relative link found by CI in `docs/plans/archived/run-objective-checks-in-mechanical-validation.md`.\n- Verification passed: `deno run -A scripts/write-version.js && deno run -A scripts/run-tests.js src/cmd/load-plan/index.integration.test.ts`; `deno run -A scripts/run-tests.js src/cmd/plans/archive.test.ts`; `deno task ci`.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "7ada1b0478ec1f60182217a3cede0277cddccf15",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "2b9e5225b3f002ee9d0f63e8cae73e9b989f48e3"
+        }
+    }
+}

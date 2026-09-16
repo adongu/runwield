@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 15,
+    "planName": "agy-cli-execution-backend/02-register-agy-cli-backend-models",
+    "planId": "23d6941e-4c8c-49d9-9a29-5bf772926a44",
+    "state": {
+        "updatedAt": "2026-09-03T19:21:13.602Z",
+        "documentWorktreeId": "4e445629",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-03T19:21:03.838Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-09-03T18:32:48.826Z",
+        "executionReport": "- Implemented explicit `agy-cli/<model-id>` registry lookup with external CLI metadata, text-only descriptors, `executionBackend: \"agy-cli\"`, `healthCheck: \"execution-preflight\"`, and 128000 context fallback.\n- Generalized external CLI filtering so `claude-cli` and `agy-cli` stay out of API auth, OAuth, credential reads/lists, registered provider config, available models, completions, `/login`, `/logout`, and `/status`.\n- Kept execution routing closed for `agy-cli`; added the typed backend guard to pending Session model reconfiguration so unsupported Agy selections save a deferred default without switching the active Session.\n- Preserved child 01 spike modules and updated their boundary test: explicit Agy lookup is now valid, but catalog selection and execution still remain unavailable.\n- Added 10 Deno tests, removed 0 tests. Rewrote 2 existing tests: the auth test now covers both external CLI providers across login/status/logout, and the child 01 spike test now protects the new child 02 boundary instead of the old undefined lookup behavior.\n- Verified target branch prerequisite: `feature/agy-cli-execution-backend` exists and contains child 01 commit `3d69b058b80e9cb2b1ccf942d92674e746f501b6` as an ancestor.\n- Verification passed: targeted registry/validation tests, targeted command/auth/resume/session tests, `deno task check`, `deno task seams:check`, `deno task test`, and full `deno task ci`.",
+        "validatedAt": "2026-09-03T19:21:13.602Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "fec9cc8f7f91a7e96a0a9f37124835d5b49f185d",
+            "targetBranch": "feature/agy-cli-execution-backend",
+            "targetHeadBeforeMerge": "4a2c8f1496ba153f23e00c05fe68533483ba8d14"
+        }
+    }
+}
