@@ -1,9 +1,0 @@
-{
-    "version": 1,
-    "revision": 1,
-    "planName": "forge-change-request-delivery/02-add-forge-delivery-attempt-state-and-coordinator-skeleton",
-    "planId": "d9a483fe-38ee-4e9f-8580-f7cf85ba9f0c",
-    "state": {
-        "updatedAt": "2026-08-31T02:46:58.171Z"
-    }
-}
