@@ -1,9 +1,0 @@
-{
-    "version": 1,
-    "revision": 1,
-    "planName": "forge-change-request-delivery/09-handle-stale-source-heads-and-selected-feedback-repair",
-    "planId": "a1f16e7c-57d6-4aa6-8a21-2b186d8bef95",
-    "state": {
-        "updatedAt": "2026-08-31T02:46:58.468Z"
-    }
-}
