@@ -1,0 +1,148 @@
+{
+    "version": 2,
+    "entries": [
+        {
+            "id": "2a8d60a2",
+            "planName": "package-manager-distribution/02-windows-winget-readiness",
+            "planId": "28ebe593-0f9f-4e34-b16c-51553fabfa38",
+            "baseBranch": "main",
+            "baseRef": "refs/remotes/origin/main",
+            "baseCommit": "062350150c97fab47e99e0d04c6a85e3740915c5",
+            "baseTree": "715d3a262eb938e103ba1ab9f89175b96a2224cd",
+            "branch": "worktree/package-manager-distribution-02-windows-winget-r-2a8d60a2",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-package-manager-distribution-02-windows-winget-r-2a8d60a2",
+            "status": "validated",
+            "createdAt": "2026-09-11T23:22:10.710Z",
+            "updatedAt": "2026-09-16T04:29:27.529Z",
+            "executionBaselineTree": "993c098768dc43bfe0bcbff293d1cdbf123c146b",
+            "publication": {
+                "version": 1,
+                "revision": 7,
+                "phase": "artifacts_committed",
+                "attemptId": "2a8d60a2",
+                "planId": "28ebe593-0f9f-4e34-b16c-51553fabfa38",
+                "planName": "package-manager-distribution/02-windows-winget-readiness",
+                "targetBranch": "main",
+                "executionBranch": "worktree/package-manager-distribution-02-windows-winget-r-2a8d60a2",
+                "executionCwd": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-package-manager-distribution-02-windows-winget-r-2a8d60a2",
+                "publicationRoot": "/Users/gandazgul/Documents/web/runwield/.wld/plan-staging/2a8d60a2",
+                "validatedCommit": "f728be82015d4a0b47b135f3dd06ef54545bd84f",
+                "targetHeadAtSeal": "a8605575ab5598f975aac3223f29c6cd982ad4af",
+                "createdAt": "2026-09-16T03:55:06.129Z",
+                "updatedAt": "2026-09-16T04:29:27.529Z",
+                "artifactCommit": "df8e565df7a1c4f9fde503e3b401af1901d81865",
+                "planPaths": [
+                    "docs/plans/package-manager-distribution/02-windows-winget-readiness.md"
+                ],
+                "failure": {
+                    "phase": "artifacts_committed",
+                    "kind": "publication_failed",
+                    "message": "Execution worktree changed after the validated candidate was sealed. Run Workflow Validation again before publishing these files: docs/plans/package-manager-distribution/02-windows-winget-readiness.md",
+                    "recordedAt": "2026-09-16T04:29:27.529Z"
+                }
+            }
+        },
+        {
+            "id": "62d4278b",
+            "planName": "fix-project-vision-fallback-submission",
+            "planId": "6bbcd530-97b4-471e-bf8b-a6507e808f35",
+            "baseBranch": "main",
+            "baseRef": "refs/remotes/origin/main",
+            "baseCommit": "062350150c97fab47e99e0d04c6a85e3740915c5",
+            "baseTree": "715d3a262eb938e103ba1ab9f89175b96a2224cd",
+            "branch": "worktree/fix-project-vision-fallback-submission-62d4278b",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-fix-project-vision-fallback-submission-62d4278b",
+            "status": "validated",
+            "createdAt": "2026-09-13T04:26:55.969Z",
+            "updatedAt": "2026-09-15T01:51:11.097Z",
+            "executionBaselineTree": "63a0ecf5d9848e912cb258348f2b585c52b87d37",
+            "publication": {
+                "version": 1,
+                "revision": 3,
+                "phase": "artifacts_committed",
+                "attemptId": "62d4278b",
+                "planId": "6bbcd530-97b4-471e-bf8b-a6507e808f35",
+                "planName": "fix-project-vision-fallback-submission",
+                "targetBranch": "main",
+                "executionBranch": "worktree/fix-project-vision-fallback-submission-62d4278b",
+                "executionCwd": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-fix-project-vision-fallback-submission-62d4278b",
+                "publicationRoot": "/Users/gandazgul/Documents/web/runwield/.wld/plan-staging/62d4278b",
+                "validatedCommit": "b87c2c3a125716940fb412e1796c178a39ff84a9",
+                "targetHeadAtSeal": "ec0194e0c797c9617b214065009521b1ef776b2c",
+                "createdAt": "2026-09-15T01:50:57.651Z",
+                "updatedAt": "2026-09-15T01:51:11.097Z",
+                "artifactCommit": "6be7c1d5ccc0a9adeabc4ccc6ad7f90e88154803",
+                "planPaths": [
+                    "docs/plans/fix-project-vision-fallback-submission.md"
+                ],
+                "failure": {
+                    "phase": "artifacts_committed",
+                    "kind": "isolated_publication_conflict",
+                    "message": "git merge --no-ff worktree/fix-project-vision-fallback-submission-62d4278b failed: Auto-merging docs/plans/fix-project-vision-fallback-submission.md\nCONFLICT (add/add): Merge conflict in docs/plans/fix-project-vision-fallback-submission.md\nAuto-merging docs/prd/runwield-core-prd.md\nAuto-merging docs/prd/runwield-workspace-prd.md\nCONFLICT (content): Merge conflict in docs/prd/runwield-workspace-prd.md\nAuto-merging docs/reports/core-prd-gap-audit.md\nCONFLICT (add/add): Merge conflict in docs/reports/core-prd-gap-audit.md\nAuto-merging src/shared/session/session.js\nAuto-merging src/ui/workspace/islands/SessionSurface.jsx\nAuto-merging src/ui/workspace/workspace-session-ux.test.tsx\nAutomatic merge failed; fix conflicts and then commit the result.",
+                    "recordedAt": "2026-09-15T01:51:11.097Z",
+                    "repairRoot": "/Users/gandazgul/Documents/web/runwield/.wld/plan-staging/62d4278b"
+                }
+            }
+        },
+        {
+            "id": "94eaf837",
+            "planName": "acp-shared-slash-commands",
+            "planId": "2d8c7972-ac2c-4cb6-b073-b326c9cbae7e",
+            "baseBranch": "main",
+            "baseRef": "refs/remotes/origin/main",
+            "baseCommit": "db535dc84786aeaf9ebebf38965eda45835e4d5f",
+            "baseTree": "fc29deba9d3a5a57639dcad75102e80d07a9f419",
+            "branch": "worktree/acp-shared-slash-commands-94eaf837",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-acp-shared-slash-commands-94eaf837",
+            "status": "abandoned",
+            "createdAt": "2026-09-14T03:06:50.864Z",
+            "updatedAt": "2026-09-14T15:05:50.508Z",
+            "executionBaselineTree": "59d094e0cffcd89956367a0b25cd48cccbfbec4c"
+        },
+        {
+            "id": "b888ab29",
+            "planName": "release-runtime-state-v0-11-0",
+            "planId": "9128ddfd-8601-4602-bec2-bc59e41d1d14",
+            "baseBranch": "epic/consolidate-project-runtime-state",
+            "baseRef": "refs/remotes/origin/epic/consolidate-project-runtime-state",
+            "baseCommit": "22fb0fddb46405009063fd7469c132b463984768",
+            "baseTree": "467e49ca8e68266180c86dfed6f7e78fff3e05e6",
+            "branch": "worktree/release-runtime-state-v0-11-0-b888ab29",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-release-runtime-state-v0-11-0-b888ab29",
+            "status": "active",
+            "createdAt": "2026-09-20T17:19:00.585Z",
+            "updatedAt": "2026-09-21T14:19:02.376Z",
+            "executionBaselineTree": "421b52355d0bd641d5b36db9a0afcfa7cf72e630"
+        },
+        {
+            "id": "b283c9a3",
+            "planName": "split-session-runtime-typescript",
+            "planId": "a219d9a7-0cac-4e7e-9a52-bff07b64a35e",
+            "baseBranch": "main",
+            "baseRef": "refs/remotes/origin/main",
+            "baseCommit": "9ad7b694ec0f93f2249417e8b964e431d6a1e8ab",
+            "baseTree": "739dd458937a6abc12a645bfdc1bcadfcf558891",
+            "branch": "worktree/split-session-runtime-typescript-b283c9a3",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-split-session-runtime-typescript-b283c9a3",
+            "status": "active",
+            "createdAt": "2026-09-21T13:55:48.105Z",
+            "updatedAt": "2026-09-21T13:56:04.761Z",
+            "executionBaselineTree": "6ee9e33b2f5147c9b4505f6560c9636f4da07d1d"
+        },
+        {
+            "id": "73e73311",
+            "planName": "personal-remote-workspace-v2/04-unified-workspace-search-and-artifact-reading",
+            "planId": "8923c678-c0ac-477b-8129-a2473a51c3b9",
+            "baseBranch": "main",
+            "baseRef": "refs/remotes/origin/main",
+            "baseCommit": "67ea4c2a796f3e5c3f0e2c167dc87788dc9b6c00",
+            "baseTree": "e8c89f9e13f0d80e85d407a409d5f26841190cde",
+            "branch": "worktree/personal-remote-workspace-v2-04-unified-workspac-73e73311",
+            "path": "/Users/gandazgul/.wld/worktrees/--Users-gandazgul-Documents-web-runwield--/runwield-personal-remote-workspace-v2-04-unified-workspac-73e73311",
+            "status": "active",
+            "createdAt": "2026-09-21T14:00:28.669Z",
+            "updatedAt": "2026-09-21T14:01:29.053Z",
+            "executionBaselineTree": "e8c89f9e13f0d80e85d407a409d5f26841190cde"
+        }
+    ]
+}

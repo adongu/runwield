@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "29d8ff70-d038-4925-9b46-7c6237ad071b",
+    "planName": "archived/concurrent-worktrees-execution-isolation",
+    "state": {
+        "updatedAt": "2026-06-16T02:58:57.961Z",
+        "failureReason": "Semantic validation did not approve after 3 cycles."
+    }
+}

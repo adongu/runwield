@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 13,
+    "planName": "conversational-checkpoints-and-acp-interviews/01-conversational-pair-checkpoints",
+    "planId": "9f124b4c-f21a-4fe4-815e-15e876ec169c",
+    "state": {
+        "updatedAt": "2026-09-20T20:53:24.710Z",
+        "documentWorktreeId": "3a0e7993",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-20T20:53:16.256Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-20T18:53:12.712Z",
+        "executionReport": "- Implemented conversational Pair checkpoints across TUI, Workspace, ACP, reload, reactivation, and compaction. Typed records now control report, resolution, Stop/resume, autonomous switching, revisions, and final assent.\n- Bound checkpoint authority to the active workflow attempt and genuine later user turns. Same-turn output, generated continuation, stale attempts, and quoted text cannot resolve checkpoints.\n- Made terminal lifecycle reports stop Claude CLI and Agy CLI immediately, preventing later native tool work.\n- Updated prompts, PRDs, ADRs, domain language, ACP notes, Workspace fixtures, and UI copy. No Pair form remains.\n- Headed browser check: `http://127.0.0.1:5173/dev` at desktop and phone widths. Pair report appeared in the normal timeline; composer guidance stayed usable. No Pair-specific console or network failure. A React/Base UI hydration-ID warning was visible; screenshot capture timed out, so no screenshot was retained.\n- Verification passed: focused Pair, workflow, ACP, Workspace, Claude CLI, and Agy CLI suites; `deno task ci` passed all checks and 393 test files.\n- Test declaration delta: 26 removed/replaced, 24 added, net -2. Existing lifecycle, persistence, authority, and surface tests were rewritten for conversation. Deleted coverage only protected removed Pair-form behavior: final-form labels, decision buttons, bounded form context, form cancellation/empty feedback, and invalid form selections.",
+        "validatedAt": "2026-09-20T20:53:24.710Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "d3abcd6bf72f2e12ec04b0d10d3cf9d86d82a583",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "da8bb104945d9419c0930bd69dd95305ed1d4e47"
+        }
+    }
+}

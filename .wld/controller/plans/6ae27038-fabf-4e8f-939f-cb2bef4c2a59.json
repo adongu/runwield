@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "6ae27038-fabf-4e8f-939f-cb2bef4c2a59",
+    "planName": "archived/personal-remote-workspace-v1/17-workspace-ux-hardening-pass",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:47.295Z",
+        "implementedAt": "2026-08-23T17:04:02.000Z",
+        "executionReport": "- Rewrote scope summary to remove cut timeline-filter/dashboard-lite work and reflect the owner-approved scope.\n- Confirmed most Plan 17 work was already implemented: browser recovery/progress surfaces, workflow-state sidebar, image-paste Session attachments, latest-block control, and Session state indicators.\n- Filled the gap in TUI-style system event behavior by merging consecutive system events of the same type into one block and rendering merged lines safely.\n- Removed user-visible dashboard build-state copy from the owner Projects page.\n- Verification passed: focused Workspace/session tests, workspace type check, and full deno task ci.\n- Browser evidence: dev server at http://127.0.0.1:5173; checked /dev/plan-progress in headed Chrome and saved artifacts/plan17-progress-final.png. Auth-gated owner Session fixture at :8788 redirected to /pair, so the existing Session screenshots remain the available visual evidence for the sidebar route.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped"
+    }
+}

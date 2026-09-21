@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "e992c156-7b85-426b-9e1e-dfa7ca74540b",
+    "planName": "archived/bridge-memory-and-code-tools-to-claude-cli",
+    "state": {
+        "updatedAt": "2026-08-11T14:00:33.318Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-08-09T14:44:55.559Z",
+        "verifiedAt": "2026-08-09T19:39:04.981Z",
+        "executionReport": "- Implemented host-neutral Mnemosyne and Cymbal tool factories, with lazy Mnemosyne project collection resolution and `--no-federate` Cymbal execution for all `code_*` tools.\n- Implemented Claude CLI capability tool composition, generalized the MCP bridge to Bridged Tools, added alias handling, duplicate-alias checks, advertised tool names, lifecycle-only terminal gating, abort-signal propagation, and 600000 ms MCP idle timeout config/env.\n- Updated Claude CLI session wiring so bridged lifecycle, capability, Work Record, `multi_file_edit`, `user_interview`, `return_to_router`, and caller-supplied tools such as `review_diff` reach the turn and appear in the system prompt.\n- Updated docs for the Bridged Tool term and Claude CLI transcript behavior; also fixed one broken archived Plan doc link found by CI.\n- Tests changed: no tests were removed; existing tests were rewritten only where behavior moved from session-start init to first-call init; added 21 Deno test cases across new/renamed bridge, capability, command, Mnemosyne, Cymbal, and Claude CLI execution coverage.\n- Verification passed: `deno task ci` passed, including check, workspace check, lint, language policy, seams check, doc-links check, and full test suite.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "f14e06f6d9c32d3d4646848354a37762ba6ef95d",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "77256582dbfcb77bd2098273420bc41c4a8c9912"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 36,
+    "planName": "consolidate-project-runtime-state/07-enforce-git-and-publication-safety",
+    "planId": "6e195a92-3697-477e-b097-45ac5bd648d7",
+    "state": {
+        "updatedAt": "2026-09-16T04:37:58.941Z",
+        "documentWorktreeId": "09f88c82",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "always",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-16T04:37:50.715Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-15T01:51:27.836Z",
+        "executionReport": "- Implemented one canonical `.gitignore` block for `.wld/internal/`, duplicate/obsolete cleanup, idempotent reconciliation, broad-rule warnings, and entry/execution checkout reconciliation.\n- Added Git runtime safety checks for current and legacy runtime paths in HEAD, index, intent-to-add, deletions, renames, staging, checkpoints, publication metadata, merge repair, and local/remote publication history.\n- Preserved user `.wld/settings.json`, `.wld/agents/**`, `.wld/skills/**`, and `.wld/prompts/**` as eligible changes while excluding runtime data.\n- Updated Core PRD work-protection text for delivered Git safety and preserved user configuration.\n- Tests changed: +11 `Deno.test`, -1 `Deno.test`; removed `previously committed runtime state is removed before merge` because that cleanup behavior no longer exists and is replaced by runtime-history refusal coverage.\n- Verified with targeted runner: `deno run -A scripts/run-tests.js src/shared/runwield-owned-paths.test.js src/shared/project-runtime-layout.test.ts src/shared/worktree-runtime-state-isolation.test.js src/shared/worktree-merge.test.js src/shared/workflow/execution-progress.test.ts src/shared/workflow/validation-publication.test.ts src/shared/isolated-publication.test.ts src/shared/workflow/publication-machine.e2e.test.ts src/shared/workflow/validation-merge-repair.test.ts` — 93 passed.\n- Verified `deno task seams:check` — passed.\n- Verified `deno task ci` — passed, including 375 test files.\n- Manual disposable Git check: reconcile old block twice was changed then idempotent; forced staged `.wld/internal/future/state.json` caused `RunWieldRuntimeGitSafetyError` and preserved staged user config plus runtime bytes.",
+        "validatedAt": "2026-09-16T04:37:58.941Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "70ec0a198dd5264527a8acb0de466bc8c309d97c",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "2a9c135a506ebd0d4b97c485c842f634e462e491"
+        }
+    }
+}

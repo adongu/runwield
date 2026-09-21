@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 21,
+    "planName": "record-pair-plan-deviations",
+    "planId": "6fab52da-b258-4a81-a36b-6695ce226c60",
+    "state": {
+        "updatedAt": "2026-09-11T02:45:59.115Z",
+        "documentWorktreeId": "f00ee389",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-09-10T20:40:37.391Z",
+        "executionReport": "- Added Plan-owned `planDeviations` with strict normalization, YAML round-trip, malformed-entry failure, prompt/Work Record renderers, and save/load preservation.\n- Added Pair-only `record_plan_deviation`: exact confirmation required; canceled, unsupported, inactive, stale, and duplicate calls behave safely; persistence uses `savePlan` with expected revision and no Plan Amendment code.\n- Wired the tool beside `pair_checkpoint` for Pair execution and Pair validation repair; updated tool policy and TUI confirmation handling.\n- Updated Engineer/re-anchor and Semantic Reviewer prompts so confirmed deviations are shown as effective Plan authority and supersede conflicting original text.\n- Updated Work Record generation/backfill and Recorder prompt so confirmed deviations always render under `## Deviations from Plan`.\n- Updated domain/workflow/authority docs and RunWield Plan skill; kept Plan Amendment retired.\n- Tests changed: added 16 tests; removed 0 tests; renamed/expanded 1 static tool-policy test to cover both Pair workflow tools.\n- Verification passed: focused test batches passed; `deno task seams:check` passed; full `deno task ci` passed.",
+        "validatedAt": "2026-09-11T02:45:59.115Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "03c0577e824a20668fe95bc7ef9215cc042b45b8",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "4b7920492999ce63c850f0abea087e8d8c579096"
+        }
+    }
+}

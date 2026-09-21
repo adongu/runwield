@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 18,
+    "planName": "persist-agent-switch-notices",
+    "planId": "5d5685b0-9234-495d-ae78-00f0f2eb7edc",
+    "state": {
+        "updatedAt": "2026-09-04T03:15:49.545Z",
+        "documentWorktreeId": "affd5745",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-03T20:46:58.562Z",
+        "executionReport": "- Persisted active-Agent markers now include canonical `agentName` plus loaded `displayName`, while old markers without `displayName` still read correctly and duplicate canonical markers stay suppressed.\n- `agent_changed` now accepts optional `displayName` and `rootHandoff`; `switchActiveAgent` marks only successful different root handoffs and keeps initial, same-Agent, failed, and temporary-profile events quiet.\n- Live TUI rendering now appends `RunWield` / `Agent switched to <Display Name>` once per marked different root handoff, while all `agent_changed` events still refresh the footer.\n- Transcript replay now converts later different active-Agent markers into stable `system_status` notices with the `RunWield` header, uses legacy display-name resolution when needed, and carries root-Agent state across segments.\n- Added/updated behavioral coverage for persistence, runtime event validation, root-handoff classification, live TUI notices, replay notices, segment-boundary carryover, and the composed `/agent planner` golden journey; test count increased by 5 Deno tests, and no tests were removed.\n- Verification passed: targeted session/TUI tests, golden `/agent` scenario, named-invocation preservation test, `deno task seams:check`, `deno task test`, and full `deno task ci`.",
+        "validatedAt": "2026-09-04T03:15:24.642Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "d0b841619d334f7abf876135ca4604f536645b85",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "606b08670a9721de2c1a740be464624c23910a56"
+        }
+    }
+}

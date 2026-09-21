@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "6628077e-29f5-4f9c-b993-7d9e13dc7cbf",
+    "planName": "archived/run-objective-checks-in-mechanical-validation",
+    "state": {
+        "updatedAt": "2026-08-09T05:03:37.680Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-08-01T18:51:26.646Z",
+        "verifiedAt": "2026-08-01T20:56:47.371Z",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "7e7d3a99cce691df4c8b935cff6097f10b6d3d0b",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "586b5a3a4700fbe188bb5c5239dbdf419db59c0c"
+        }
+    }
+}

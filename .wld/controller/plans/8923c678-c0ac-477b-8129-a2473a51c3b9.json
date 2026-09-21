@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 6,
+    "planName": "personal-remote-workspace-v2/04-unified-workspace-search-and-artifact-reading",
+    "planId": "8923c678-c0ac-477b-8129-a2473a51c3b9",
+    "state": {
+        "updatedAt": "2026-09-21T14:01:29.099Z",
+        "documentWorktreeId": "73e73311",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": null,
+        "humanReviewDecision": null,
+        "humanReviewedAt": null
+    }
+}

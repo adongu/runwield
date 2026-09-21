@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "3ad362d3-ea4c-4cb2-bebe-755e85a6361a",
+    "planName": "archived/personal-remote-workspace-v1/14-cross-surface-workflow-invariant-hardening",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:47.295Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 3,
+        "implementedAt": "2026-08-12T21:23:28.459Z",
+        "humanReviewMode": null,
+        "humanReviewDecision": null
+    }
+}

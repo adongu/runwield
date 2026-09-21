@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 22,
+    "planName": "make-workflow-tool-events-authoritative",
+    "planId": "c4f4bd36-cb3c-4972-a9b7-dbc6b5b84bab",
+    "state": {
+        "updatedAt": "2026-08-31T15:05:43.240Z",
+        "documentWorktreeId": "8cc68d85",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-08-30T23:02:17.780Z",
+        "executionReport": "- Added `src/shared/workflow/workflow-tool-events.ts` with typed consume-once Workflow Tool Events, owner/turn/workflow-attempt scoping, root JSONL accepted/settled outbox, waiter support, and stale-attempt rejection tests.\n- Wired accepted `triage_report`, `plan_written`, `task_completed`, `review_complete`, `review_diff`, and `qa_checklist_generated` calls to publish events after semantic acceptance; rejected or failed calls do not publish advancing events.\n- Updated root, planning, execution, repair, and validation paths to claim Workflow Tool Events first; legacy transcript readers remain only as compatibility/display fallbacks for older tests and transcript-only fixtures.\n- Updated domain, architecture, session, workflow, validation-authority, and ADR-006 docs to describe Workflow Tool Events and to state that transcripts are display/audit, not workflow authority.\n- Added `src/shared/workflow/workflow-tool-events.test.ts` with 3 new tests; no tests were removed or replaced.\n- Verification passed: targeted tool/event tests, targeted root/backend tests, targeted workflow/validation tests, `deno task check`, `deno task seams:check`, and `deno lint`.\n- Full `deno task ci` was attempted twice: first failed because Workspace build artifacts were unavailable for two Workspace tests; after `deno task workspace:build`, the second run passed checks/lint/seams/workspace-check but timed out during the full test phase before completion.",
+        "validatedAt": "2026-08-31T15:05:13.997Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "2fa5ff46debcbb19405690e75d0d38eca199369f",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "9f7886cb5cbaaa61a4c827fc8d6bcd238a6678ed"
+        }
+    }
+}

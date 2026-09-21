@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "b2208e8a-cdf1-459a-a5cb-32904282528d",
+    "planName": "archived/init-verification-command-confirmation",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:28.348Z",
+        "implementedAt": "2026-08-24T12:28:52.000Z",
+        "executionReport": "Init now discovers verification-command candidates, confirms the choice with the user, persists it through RunWield-owned settings authority, and covers the real interaction and no-verification paths."
+    }
+}

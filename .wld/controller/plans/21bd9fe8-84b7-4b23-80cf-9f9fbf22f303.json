@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "21bd9fe8-84b7-4b23-80cf-9f9fbf22f303",
+    "planName": "archived/finish-repaired-merge-instead-of-restarting-it",
+    "state": {
+        "updatedAt": "2026-08-10T00:10:08.345Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-08-02T23:19:44.641Z",
+        "verifiedAt": "2026-08-03T01:59:59.872Z",
+        "executionReport": "- Implemented durable `validationMergeRepairWorktree` Front Matter support, transactional `validation_merge_repair_worktree` persistence/clearing, publication seeding from stored existing paths, and fail-closed handling for blocked persistence.\n- Updated Plan Lifecycle clearing so spent/stale merge repair paths are cleared on `validation_passed`, implemented re-entry, and execution/recovery/review/hold reset events; documented the field and its distinction from `worktree_merge_failed`.\n- Added automated coverage: +4 tests, 0 removed/replaced; new tests cover real-Git stored repaired merge publication resume, Front Matter round-trip/clearing, and lifecycle invalidation clearing.\n- Verification passed: targeted workflow tests, objective checks OC1/OC2/OC3, `deno task test src/shared/workflow`, `deno task seams:check`, and full `deno task ci`.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "89b54779b252325903f1b13bf162152e10feae36",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "bb11ce0630fd8a5dae820872ccab18192cb3ed60"
+        }
+    }
+}

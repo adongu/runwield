@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "4f16e83d-f127-42cd-8ea3-39fbbfec35fb",
+    "planName": "archived/personal-remote-workspace-v1/13-execution-segment-handoff-backend",
+    "state": {
+        "updatedAt": "2026-08-24T21:23:47.295Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-08-12T19:34:21.328Z",
+        "verifiedAt": "2026-08-12T20:30:08.918Z",
+        "executionReport": "- Implemented typed execution/semantic-repair continuation packets, canonical evidence validation, and pending-marker detection in `execution-segment-handoff.ts`.\n- Split managed execution through Runtime preparation → standalone rollover → marker resume; unmanaged execution path remains direct.\n- Added Runtime semantic-repair handoff rollover and root repair Agent execution; direct/unmanaged validation keeps legacy in-memory repair behavior unless handoff mode is enabled.\n- Added Workspace backend entrypoint for managed Plan execution handoff and kept Approve for Later readiness-only with no active execution workflow.\n- Tests: added 7 new handoff tests; removed 0 tests; rewrote affected validation-review assertions from disposable feedback-engineer repair to persisted `semantic_repair_handoff` behavior while preserving legacy direct-validation coverage.\n- Verification passed: focused handoff suites, existing rollover/execution/validation suites, Objective-Failing Checks, `deno task seams:check`, and full `deno task ci` (288 files passed, 0 failed).\n- Manual TUI interruption scenarios from the plan were not exercised interactively in this API session.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "4addb1a14d5d5a5a2440ca346a2c0dc118842f00",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "f36967973eba3d3ac6fadb807675b8996dc031e0"
+        }
+    }
+}

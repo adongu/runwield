@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 31,
+    "planName": "consolidate-project-runtime-state/02-add-legacy-runtime-migration-engine",
+    "planId": "6412559b-2b74-4121-bb1c-f7c1d5e6d793",
+    "state": {
+        "updatedAt": "2026-09-10T14:23:45.981Z",
+        "documentWorktreeId": "4b0163db",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "always",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-10T14:22:20.330Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 6,
+        "implementedAt": "2026-09-08T13:50:30.519Z",
+        "executionReport": "- Implemented `migrateLegacyProjectRuntimeState(selectedCheckoutRoot)` with `ready`/`blocked` results, versioned `layout.json`, journaled `layout-migration.json`, and serialized `layout-migration.lock`.\n- Added read-only exact-path registry inspection and exact-path registry locking while preserving existing registry callers and legacy identity migration behavior.\n- Added migration preflight/adoption for inactive primary and selected legacy runtime leaves, with blockers for malformed registry/evidence, authority conflicts, tracked runtime or secrets, symlinks, invalid worktrees, active legacy locks, unfinished publication, saved repair roots, and unsupported atomic moves.\n- Added publication cleanup-safe predicate and wired migration to require `cleanup_complete` publication evidence.\n- Added subprocess migration test driver for real OS lock behavior.\n- Test changes: added 10 tests, removed 0 tests; no skipped tests.\n- Verification passed: focused Plan command passed (`32 passed`), `deno task seams:check` passed, and full `deno task ci` passed (`356 files passed`).",
+        "validatedAt": "2026-09-10T14:23:45.981Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "6e98ff38ddc260b4a7a91339294308dbb17c9098",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "1baba5d1a96ce9771e0ea791e25db11cbf9ccbf7"
+        }
+    }
+}

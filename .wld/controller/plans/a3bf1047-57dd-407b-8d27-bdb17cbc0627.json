@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 23,
+    "planName": "fix-target-branch-review-diffs",
+    "planId": "a3bf1047-57dd-407b-8d27-bdb17cbc0627",
+    "state": {
+        "updatedAt": "2026-09-20T02:55:55.500Z",
+        "documentWorktreeId": "f7ad30d5",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-09-20T01:46:55.718Z",
+        "executionReport": "- Added `getWorktreeReviewDiff`: direct recorded-target-tip to current-worktree comparison, including committed, staged, unstaged, deleted, and untracked files; missing targets fail closed.\n- Routed AI review, fresh/resumed repair, TUI/ACP human review, standalone reload, and Workspace reload through the shared comparison. Recovery and repair-only snapshots remain separate.\n- Kept AI and human patches byte-equivalent, added UTF-8-safe paging, preserved valid empty reviews, and kept local comparison context out of browser payloads.\n- Updated Reviewer and repair prompts so unchanged context cannot be treated as Plan work and wrongly attributed findings can resolve with evidence without forced edits.\n- Updated the Core PRD, Plan lifecycle, ADR-005, and domain language for target-relative review and AI/human parity.\n- Added 10 tests and replaced 3 existing tests against the new target-relative behavior; no protected behavior was deleted. Rewrites: semantic full-diff baseline test, standalone review reload test, and Workspace reload test.\n- Verification passed: focused Plan suite, persisted repair/runtime tests, review contract tests, and `deno task ci` (`387` files passed, `0` failed). Workspace check emitted two existing `FormEvent` deprecation hints, with no errors.",
+        "validatedAt": "2026-09-20T02:55:55.500Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "71769abb2a2e218e67c5e484fc7d143b04e2ecba",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "1b8fcbc1c9b2a9c13de3d5e3c28e253ee18de23b"
+        }
+    }
+}

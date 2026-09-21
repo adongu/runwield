@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 21,
+    "planName": "agy-cli-execution-backend/05-harden-agy-cli-failures-and-continuations",
+    "planId": "2ca9527d-ed5c-4a04-b0d3-cc667eb7aa12",
+    "state": {
+        "updatedAt": "2026-09-05T12:58:17.199Z",
+        "documentWorktreeId": "c1665f2c",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-09-05T05:41:40.920Z",
+        "executionReport": "- Implemented Agy failure hardening: typed sanitized `runwield.backend_status`, closed Agy failure kinds, custom-agent preflight, safe cleanup warnings, retry/continuation behavior, and warning-only late failures after accepted workflow tool events.\n- Added `spawnForegroundProcess` and moved Agy to the shared process-tree owner with direct arguments, abort/timeout outcomes, descendant cleanup, and `--print-timeout 24h` on normal Agy turns.\n- Updated replay so Agy and Claude backend status entries project only as display-only `SYSTEM_STATUS` events.\n- Tests changed: added 12 tests; removed 0. Reworked 1 existing Agy process-failure test because failed turns no longer delete the reusable temporary Agent before session disposal.\n- Verification passed: `deno task check`; focused process/Agy/projection/runtime/regression suites; `deno task seams:check`; `deno task test` (356 files); final `deno task ci` (356 files, 0 failed).\n- Manual real authenticated Agy checks were not run to avoid using your personal Antigravity credentials/global config; installed `agy` is 1.1.27 and still documents default `--print-timeout 5m0s`.",
+        "validatedAt": "2026-09-05T12:58:17.199Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "9088f2cc909daa4656c54a19f7b06a5c95897bdf",
+            "targetBranch": "feature/agy-cli-execution-backend",
+            "targetHeadBeforeMerge": "f28c501ba3cdcd3dcd50fbbf7e1d2c0f1312e978"
+        }
+    }
+}

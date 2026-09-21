@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "b03c8b1e-4936-4f20-ae8c-487c63248702",
+    "planName": "archived/deepen-golden-tui-validation-workflow-coverage",
+    "state": {
+        "updatedAt": "2026-08-19T19:35:35.948Z",
+        "validationCheckpoint": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "failureReason": "- Branch ownership still overclaims at least one path: `validation-tree-objective-none` owns `mechanical:objective:all-pass` even though the fixture defines no Objective Checks.\n- `validation-tree-human-review-ask-skip` also owns `human-review:none`; audit whether that final state genuinely proves the distinct mode-none entry path or split it into its own scenario.\n- Some evidence requirements remain category-level. Tighten them to prove the exact interaction value, next phase or Agent turn, and branch-specific durable field before describing the inventory as independently branch-complete.",
+        "implementedAt": "2026-08-13T20:15:29.420Z",
+        "executionReport": "- Follow-on work replaced the initial inventory-focused checkpoint with 66 real composed-TUI scenarios across 11 concern test files, collectively owning 72 declared validation branch IDs.\n- Scenarios exercise `/load-plan`, Session Runtime routing, real Git worktrees, CI and Objective Check commands, repair and review Agent turns, user interactions, lifecycle persistence, recovery, and publication. Tests run four files in parallel with isolated process-global state.\n- Production defects exposed by the Goldens were repaired, including lifecycle recovery, validation checkpoints, incomplete Semantic Reviewer turns, omitted-finding nudges, durable Stop behavior, stale merge-repair worktrees, and publication repair recovery.\n- Repair commit `c15e7b0e` was merged to `main` by `7a164b9f`. All 11 validation-workflow Golden files passed with zero ignored tests (129.4s, four workers). Post-merge `deno task ci` passed 321 test files with 0 failures (276.3s, four workers), including type, Workspace, lint, language-policy, seam, documentation-link, and submodule checks.\n- The suite is no longer mainly inventory/meta-tests. A remaining proof-precision audit is recorded in `failureReason`; do not claim every branch is independently proven until those ownership and evidence gaps are resolved.",
+        "humanReviewMode": null,
+        "humanReviewDecision": null
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 21,
+    "planName": "package-manager-distribution/01-homebrew-tap",
+    "planId": "e8fff364-7834-4f36-ae0d-ad3cd06584d4",
+    "state": {
+        "updatedAt": "2026-09-11T23:21:49.474Z",
+        "documentWorktreeId": "9b290b44",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-09-11T21:10:41.124Z",
+        "executionReport": "- Implemented Homebrew tap preparation: `deno task package:homebrew` renders `wld` and `mnemoteca` formulas from verified Stable assets, rejects RC/corrupt/incomplete inputs, and records Mnemoteca v0.3.1 macOS asset hashes.\n- Added `package:homebrew:check` for owner/final release checks against a local `gandazgul/tap` tap: audit, install, and brew test both formulas.\n- Added package metadata detection via `runwield-install.json`; Homebrew-owned `wld update/upgrade` now prints `brew upgrade gandazgul/tap/wld` and does not invoke `install.sh`, including RC/version/downgrade paths.\n- Updated helper repair and update notice text to use package-manager guidance for package-owned installs.\n- Added Stable-only release workflow artifact rendering for the Homebrew tap; no tap push or public release is performed.\n- Updated quickstart, troubleshooting, contributing, release docs, package README, and Core PRD with Homebrew dependency, first-use, update, and publication-boundary behavior.\n- Tests added: +7, removed/replaced: 0.\n- Verification passed: focused test command, `deno task ci`, real public-asset formula generation for current v0.10.0/Mnemoteca v0.3.1, and compiled metadata-capable binary update smoke in a Homebrew-like layout.\n- Not run: clean Intel Mac Homebrew install; final `package:homebrew:check` against the future metadata-capable Stable release remains an owner release step after publication.",
+        "validatedAt": "2026-09-11T23:21:49.474Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "7f3ef756bb4325fcda54d5008003b14ec251d618",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "600f3e835489416377352e00d00e5deaf9d24934"
+        }
+    }
+}

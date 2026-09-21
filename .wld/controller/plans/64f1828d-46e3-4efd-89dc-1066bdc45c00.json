@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "64f1828d-46e3-4efd-89dc-1066bdc45c00",
+    "planName": "archived/repair-validation-authority-and-recovery",
+    "state": {
+        "updatedAt": "2026-08-16T18:01:32.486Z",
+        "validationCheckpoint": null
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "revision": 2,
+    "planName": "fix-recovery-worktree-discard-cleanup",
+    "planId": "1e706d9e-56a0-43cc-8c6f-f3984fd7aea6",
+    "state": {
+        "updatedAt": "2026-09-11T20:51:07.791Z",
+        "validationCheckpoint": null,
+        "humanReviewMode": null,
+        "humanReviewDecision": null,
+        "humanReviewedAt": null
+    }
+}

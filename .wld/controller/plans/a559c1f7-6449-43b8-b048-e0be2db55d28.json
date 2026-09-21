@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "a559c1f7-6449-43b8-b048-e0be2db55d28",
+    "planName": "archived/remove-objective-failing-checks",
+    "state": {
+        "updatedAt": "2026-08-25T14:11:26.649Z",
+        "validationCheckpoint": null
+    }
+}

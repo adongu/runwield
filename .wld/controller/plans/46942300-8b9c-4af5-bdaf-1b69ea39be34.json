@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 32,
+    "planName": "personal-remote-workspace-v2/02-shared-core-notifications-and-workspace-browser-delivery",
+    "planId": "46942300-8b9c-4af5-bdaf-1b69ea39be34",
+    "state": {
+        "updatedAt": "2026-09-08T13:22:12.290Z",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-08T13:21:22.835Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "documentWorktreeId": "2d33e638",
+        "executionMode": "worktree",
+        "implementedAt": "2026-09-08T04:30:32.055Z",
+        "executionReport": "- Added shared notification content/policy in `src/shared/session/notification-content.ts`; TUI now imports shared labels/messages/policy and keeps terminal-only delivery.\n- Added Workspace browser notification policy on operation snapshots, bounded Agent-stop overflow reservation, and Session tab notification delivery with live-event cursor cleanup.\n- Added Workspace header bell control; visible on owner Workspace headers, absent from local Plan Board; Plan Review actions stay reachable at desktop and 390px.\n- Updated `docs/settings.md` for shared `enabled`, `events.agentStopped`, and `suppressWhenFocused`; terminal-only keys remain marked TUI-only.\n- Tests changed: added 13 tests, removed 0 tests.\n- Verification passed: shared/TUI test command, Workspace test command, `deno task workspace:check`, `deno task seams:check`, and final `deno task ci` (`357 files passed`).\n- Headed browser: `deno task workspace:dev` at `http://127.0.0.1:5173/dev/workspace/plan-review?variant=feature`; checked desktop 1440×1000 and narrow 390×844 snapshots with **Enable alerts** beside review actions, plus `/` local Plan Board with no bell.\n- Browser evidence: `artifacts/workspace-alerts-desktop.png`, `artifacts/workspace-alerts-narrow.png`; console had only Vite/React dev info. Network showed Astro dev-toolbar `504 Outdated Optimize Dep`, unrelated to app routes; app UI rendered correctly.",
+        "validatedAt": "2026-09-08T13:22:12.290Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "7c3588f3159a16786510f0a162513771ce9f32c4",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "34e1805936dc795f4c9205d1942287db54c80f78"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 24,
+    "planName": "consolidate-project-runtime-state/08-update-doctor-documentation-and-final-test-cleanup",
+    "planId": "6ec4a242-ca8e-4d00-ba74-fe141b7159a7",
+    "state": {
+        "updatedAt": "2026-09-16T20:07:58.911Z",
+        "documentWorktreeId": "361fae63",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-09-16T14:01:12.294Z",
+        "executionReport": "- Implemented read-only Doctor runtime inspection, actionable migration refusals, pure ignore diagnostics, nonmutating Plan/controller/registry/journal reads, scratch-only remote target discovery, and authoritative publication proof.\n- Preserved default/explicit repair behavior and `--check` precedence; hardened stale-lock cleanup to remove only unchanged, proven-dead locks.\n- Updated Core PRD, architecture, lifecycle, collaboration, validation, ADR, glossary, and usage docs for `.wld/internal/` ownership and Doctor behavior.\n- Test cleanup: added 6 tests and removed 0; rewrote the weakened registry-conflict test to cover both check and repair. Epic history audit found no Epic-specific deleted/skipped/TODO tests; normal golden exclusions remain covered by the separate task.\n- Focused diagnostics, dependency regressions, cross-store suite (214 tests), type check, lint, seams, doc links, and diff checks passed. Full `deno task ci` passed: 375 files.\n- Golden TUI repairs fixed runtime-entry, publication-staging race, and fixture-baseline failures. Final `deno task test:golden-tui` passed 32/33 files; `project-two-child-continuation-epic-evidence` still timed out with child two at draft after child one published. A focused rerun reproduced it.",
+        "validatedAt": "2026-09-16T20:07:58.911Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "520daa72ce5d27126cebfb42548d7687bd94aef7",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "bcd6a654dc33a7f9a30e0e32eb2263a040099c94"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 23,
+    "planName": "fix-published-plan-session-context",
+    "planId": "4c6482a6-ff82-497f-b345-1ba9ab2a4e68",
+    "state": {
+        "updatedAt": "2026-09-09T02:52:36.177Z",
+        "documentWorktreeId": "ddbb0f5f",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-08T21:38:53.855Z",
+        "executionReport": "- Fixed terminal verified publication handoff: existing root Agent Session is rebuilt as `engineer` in the primary checkout, then completed execution workflow is cleared.\n- Fixed cwd-aware Agent switching: explicit `cwd` drives project settings/root tools and rebinds `HostedSession.cwd` after successful rebuild; same-Agent cwd changes rebuild the root.\n- Fixed `/load-plan` restore flow: verified validation/recovery results keep the Engineer handoff instead of restoring Planner; active recovery still restores execution cwd.\n- Added regression coverage: +3 tests, 0 removed/replaced. Covers real Git worktree publication cleanup, primary-checkout `pwd`/`git branch --show-current`, nonterminal cwd retention, and same-Agent cwd rebuild.\n- Updated `docs/prd/runwield-core-prd.md` with the completed-Plan Engineer follow-up rule and parent Epic exception.\n- Verification passed: focused `deno run -A scripts/run-tests.js src/cmd/load-plan/index.integration.test.ts src/shared/workflow/validation-tool-continuation.integration.test.ts src/shared/session/agent-switching.test.js`; `deno task seams:check`; final `deno task ci`.",
+        "validatedAt": "2026-09-09T02:52:36.177Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "81dac3bbf89c96af016b32dd04584aed93fac6f2",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "a9e4a657dde349227ff0516dc0dc99c855c89241"
+        }
+    }
+}

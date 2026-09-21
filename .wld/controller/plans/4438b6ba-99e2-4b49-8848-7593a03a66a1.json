@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 23,
+    "planName": "agy-cli-execution-backend/04-bridge-agy-workflow-signals-through-mcp",
+    "planId": "4438b6ba-99e2-4b49-8848-7593a03a66a1",
+    "state": {
+        "updatedAt": "2026-09-05T04:28:22.652Z",
+        "documentWorktreeId": "0644ced1",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 3,
+        "implementedAt": "2026-09-04T05:56:12.129Z",
+        "executionReport": "- Implemented shared external-CLI Bridged Tool bridge with authenticated loopback MCP, shared `runwield_` lifecycle aliases, canonical transcript recording, runtime tool events, serialized lifecycle calls, terminal gating, and closed `claude-cli-mcp` / `agy-cli-mcp` provenance.\n- Added stable `wld mcp agy-cli` and `wld mcp agy-cli --setup` command path, with stdout reserved for MCP protocol, setup help/completion, and no `__internal` or proxy-named command.\n- Added safe Agy MCP setup for Antigravity global config: exact `mcpServers.runwield`, exact `mcp(runwield/*)` permission, approval-gated mutation, lock-based install, preservation of unrelated settings, refusal of unsafe states, and no persisted URL/token/session data.\n- Wired Agy Planner, execution-owner, validation-repair, and Semantic Reviewer lifecycle tools through per-turn child-process MCP environment only; Agy text and native `tool_info` remain display-only.\n- Kept Claude CLI on the shared bridge without changing its public temporary-config behavior, aliases, transcript behavior, or lifecycle semantics.\n- Generalized Semantic Review opaque MCP handling to `trustedOpaqueMcpReview`, accepting only exact `claude-cli-mcp` or `agy-cli-mcp` provenance and only waiving the `review_diff` prerequisite.\n- Updated `docs/domain-language.md` to define Bridged Tool for eligible external CLI Execution Backends and keep Workflow Tool Events as workflow authority.\n- Tests changed: added 12 `Deno.test` declarations across new/updated Agy MCP setup, command, stdio transport, and role end-to-end coverage; removed 0 tests.\n- Verification passed: Plan setup/command/transport bridge group, end-to-end CLI group, workflow/Semantic Review group, exact eligible-Agy-role fixture, `deno task check`, `deno task seams:check`, `deno task test`, and final `deno task ci`.\n- Manual-style installed Agy proof passed in a sandboxed HOME: `wld mcp agy-cli --setup` installed a stable stdio `runwield` server, and `agy mcp list` showed `/.../bin/wld mcp agy-cli` without touching real user Antigravity files.",
+        "validatedAt": "2026-09-05T04:28:22.652Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "fe6045cd6b7b39aa8a7c8a68734820097b1037e4",
+            "targetBranch": "feature/agy-cli-execution-backend",
+            "targetHeadBeforeMerge": "f28c501ba3cdcd3dcd50fbbf7e1d2c0f1312e978"
+        }
+    }
+}

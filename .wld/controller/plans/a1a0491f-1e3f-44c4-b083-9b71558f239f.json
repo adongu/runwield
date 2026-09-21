@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 20,
+    "planName": "consolidate-project-runtime-state/04-move-selected-checkout-runtime-stores",
+    "planId": "a1a0491f-1e3f-44c4-b083-9b71558f239f",
+    "state": {
+        "updatedAt": "2026-09-10T21:52:51.497Z",
+        "documentWorktreeId": "368eca2f",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-10T21:51:23.948Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 0,
+        "implementedAt": "2026-09-10T20:47:56.180Z",
+        "executionReport": "- Moved Plan/catalog locks, transition journals, Work Record supersession locks, and Doctor stale-lock scanning to the selected checkout `.wld/internal/` layout fields.\n- Preserved selected-root semantics: explicit transition resource roots still choose each lock owner, and journal/recovery flows still use the recorded checkout owner.\n- Updated migration subprocess fixtures to hold literal legacy Plan and Work Record locks, so legacy migration tests still prove old-writer refusal.\n- Tests changed: +3 test cases, 0 removed. Existing Plan lock, Doctor, journal, Work Record lock, and migration tests were rewritten against the new paths; no protected behavior was deleted.\n- Verified: focused test groups passed; `deno task seams:check` passed; final `deno task ci` passed with 368 files passed, 0 failed.",
+        "validatedAt": "2026-09-10T21:52:51.497Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "2b294a3d6243006b6c96c3bbb8faf3f1838e6c72",
+            "targetBranch": "epic/consolidate-project-runtime-state",
+            "targetHeadBeforeMerge": "4b7920492999ce63c850f0abea087e8d8c579096"
+        }
+    }
+}

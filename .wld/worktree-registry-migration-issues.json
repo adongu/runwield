@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "issues": [
+        {
+            "id": "19b3de3b",
+            "planName": "collaborative-planning-remote-shared-spaces/08-wld-plans-unshare-cli-delete-and-recovery",
+            "reason": "plan_not_found_or_missing_plan_id",
+            "candidates": [],
+            "recordedAt": "2026-08-05T15:33:10.578Z"
+        },
+        {
+            "id": "e6f1d27a",
+            "planName": "work-records-v1/04-session-end-auto-generation-settings-and-docs",
+            "reason": "plan_not_found_or_missing_plan_id",
+            "candidates": [],
+            "recordedAt": "2026-08-05T15:33:10.578Z"
+        },
+        {
+            "id": "0135e8e4",
+            "planName": "typescript-ratchet-policy",
+            "reason": "plan_not_found_or_missing_plan_id",
+            "candidates": [],
+            "recordedAt": "2026-08-05T15:33:10.578Z"
+        }
+    ]
+}

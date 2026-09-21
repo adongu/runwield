@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 18,
+    "planName": "workspace-session-screen-mvp",
+    "planId": "4e027c8b-e973-4157-bc9b-b9e2d7d29315",
+    "state": {
+        "updatedAt": "2026-08-28T20:50:48.589Z",
+        "documentWorktreeId": "09afd543",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "humanReviewedAt": null,
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 2,
+        "implementedAt": "2026-08-28T15:25:22.428Z",
+        "executionReport": "- Implemented remaining active-operation configuration behavior: Workspace-owned Agent/model changes are staged server-side and show “Applies after this response”; thinking changes apply immediately to the live Runtime Session.\n- Fixed inline interactions to return Runtime-shaped select, approval, and typed “Other” outcomes; card-local retry behavior remains intact.\n- Removed the old Existing Session technical page header and added the slim shared Session chat top bar.\n- Added automatic Session availability refresh while another surface owns the active Session; local Workspace operations do not create cross-surface pending mutation.\n- Updated tests and docs for staging, interaction outcomes, availability refresh, Activity grouping, scroll behavior, and Existing Session shell ownership; no tests were removed.\n- Verification passed: `deno task check`, `deno task workspace:check`, `deno task workspace:test`, `deno task workspace:build`, `deno task seams:check`, and `deno task ci`.\n- Headed browser checked `http://127.0.0.1:5173/projects/test/sessions/new` at 1440×1000 and 390×844; screenshots saved as `artifacts/session-mvp-final-desktop.png` and `artifacts/session-mvp-final-mobile.png`.\n- Browser evidence: New Session shell renders with empty User Request textbox, Sessions back link, Agent/Model/Thinking controls, and disabled Send state in local unpaired dev mode; console only showed normal Vite/React DevTools messages.\n- Network evidence: only expected local unpaired owner API `503` for `/api/owner/projects/test/session-options` plus successful `logo.svg` fetches.",
+        "validatedAt": "2026-08-28T20:50:28.026Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "aa8bcf7b306abe0ebe436fab81fa6b00fe7b33ad",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "38f511f94f00d2a0aca67e24170cbebf9a64672a"
+        }
+    }
+}

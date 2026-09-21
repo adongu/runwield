@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "revision": 1,
+    "planId": "e2827894-d88a-4cde-b289-39b89fdf08b0",
+    "planName": "archived/claude-cli-execution-backend/05-surface-claude-cli-selection-and-caveats",
+    "state": {
+        "updatedAt": "2026-08-10T00:09:47.489Z",
+        "executionMode": "worktree",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-08-06T02:06:21.258Z",
+        "verifiedAt": "2026-08-06T02:18:40.966Z",
+        "executionReport": "- Implemented RunWield-owned TUI model selector sourced from `RunWieldModelRegistry.getSelectable()`, showing Pi/API models plus Claude CLI aliases with search, current-model marker, refresh feedback, guidance, selection/cancel restoration, and runtime callback messaging.\n- Updated no-model onboarding so `Use Claude Code CLI` opens Claude alias selection without `/login`; selected `claude-cli/*` defaults are treated as executable backend choices.\n- Added Workspace read-only Session model/backend disclosure from committed `timeline.snapshot`, Claude-only transcript caveat, missing-model fallback, and responsive `--rw-*` styling.\n- Updated Core PRD to describe Pi and Claude CLI as Core Execution Backends, Claude Code CLI setup/sign-in, MVP internal file/Bash/tool transcript limitation, and RunWield Connect/External Agent Host distinction.\n- Tests changed: added 6 tests (`model-selector` 2, Workspace disclosure 2, UI override Claude callback 1, no-provider Claude onboarding 1); updated existing onboarding tests only to select subscription explicitly after adding the Claude-first choice; no tests were deleted.\n- Verification passed: targeted plan tests `deno run -A scripts/run-tests.js src/ui/tui/model-selector.test.ts src/ui/tui/ui-api-overrides.test.ts src/ui/tui/model-welcome.test.ts src/ui/workspace/workspace-session-backend-disclosure.test.ts` (22 passed); regression tests for Claude model registry/session selection and owner Workspace (11 passed); objective checks OC1/OC2/OC3 passed; `deno task lint`, `deno task check`, `deno task workspace:check`, and `deno task doc-links:check` passed.\n- Full `deno task ci` did not pass: `src/ui/tui/golden-scenarios/project-workflow.test.js` timed out waiting for `runtime:agent:planner` during `project-child-objective-check-unmet-stops` in the full parallel run; the same test file passed when rerun directly afterward, but the full CI failure remains unresolved.\n- Headed browser preflight: `deno task workspace:dev` started from this worktree on `http://127.0.0.1:5174` because `5173` was occupied by another app; agent-browser headed session `runwield-claude-cli-surface-64a211f9` opened Workspace.\n- Browser checks performed: desktop root Workspace and phone-width `/projects/fixture/sessions/claude-session`; exact Session disclosure states could not be verified because `workspace:dev` has no owner Session API fixture for Claude/Pi/missing-model timelines, so the Session route rendered `Session failed to load` instead of committed Session detail.\n- Browser diagnostics: console showed existing PlanBoard key warnings/errors on the root Workspace; specific Claude/Pi/missing-model disclosure visibility, wrapping, and no-console-error requirements remain unverified in a real browser due the missing fixture/API state.",
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "skipped",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "bb1e58cfc565d226f5fb7cef80f37a536cb0b1a2",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "bca1ec866721a7d07540546c8e9213ba49bbfca9"
+        }
+    }
+}

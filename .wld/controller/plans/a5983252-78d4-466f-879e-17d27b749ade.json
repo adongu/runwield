@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "revision": 20,
+    "planName": "core-owned-prompt-template-invocation",
+    "planId": "a5983252-78d4-466f-879e-17d27b749ade",
+    "state": {
+        "updatedAt": "2026-09-02T01:47:05.814Z",
+        "documentWorktreeId": "75ef477e",
+        "executionMode": "worktree",
+        "validationCheckpoint": null,
+        "humanReviewMode": "ask",
+        "humanReviewDecision": "approved",
+        "humanReviewedAt": "2026-09-02T01:46:21.187Z",
+        "validationCiAttempts": 0,
+        "validationSemanticRounds": 1,
+        "implementedAt": "2026-09-01T18:50:50.870Z",
+        "executionReport": "- Implemented Core-owned named invocation: `SessionRuntime.promptUserTurn` now resolves raw Prompt Template and Skill slash commands for TUI, Workspace, and ACP; TUI keeps built-ins/autocomplete only.\n- Added Prompt Template Front Matter execution policy for `agent`, `model`, and `thinkingLevel`, with Operator default, strict validation, one-shot auxiliary execution, workflow-tool filtering, and root Agent/model/thinking/workflow restoration.\n- Added durable hidden `runwield.named_invocation` transcript payloads so displays show compact slash text while model resume/Claude reconstruction use the exact stored expansion once.\n- Updated `/reload` to rebuild the active Agent and publish replacement Prompt Template/Skill catalogs; TUI now replaces autocomplete/collision data from the Core event.\n- Updated bundled `/commit` template and docs for Prompt Template Front Matter, cross-surface behavior, compact transcript display, reload, and Skill-vs-template workflow boundaries.\n- Tests added: +10 automated tests; no tests deleted. Rewritten TUI slash-dispatch tests now verify raw Core submission instead of TUI-owned expansion.\n- Verification passed: focused Plan test command passed; `deno task check` passed; `deno task seams:check` passed; `deno task test:golden-tui` passed; final `deno task ci` passed. Initial CI run hit `publication-machine.failure-matrix.test.ts`; its targeted rerun passed and the final full CI rerun passed.",
+        "validatedAt": "2026-09-02T01:46:35.937Z",
+        "deliveryEvidence": {
+            "version": 1,
+            "mode": "worktree_merge",
+            "executionCommit": "8bd4d4937a9b7c40af64eaa344717e38c38c801d",
+            "targetBranch": "main",
+            "targetHeadBeforeMerge": "f161bf142f288d86a3eeea605981d36a9e7f3b84"
+        }
+    }
+}
