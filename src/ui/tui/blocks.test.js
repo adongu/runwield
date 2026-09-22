@@ -872,3 +872,39 @@ Deno.test("SpinnerBlock renders tasks when provided", () => {
     assertEquals(plainText.includes("agent"), true);
     assertEquals(plainText.includes("Task 1"), true);
 });
+
+Deno.test("ValidationHandoffBlock caches panel lines until state changes", () => {
+    const state = {
+        progress: { outcome: "verified", message: "done" },
+        engineer: { agentName: "Engineer", markdown: "# report one", completedOrder: 1 },
+        reviewer: null,
+    };
+    const block = new ValidationHandoffBlock(state);
+
+    const first = block.render(80);
+    const second = block.render(80);
+    assertEquals(second, first, "idle frames should reuse the cached panel lines");
+
+    block.setState({
+        progress: { outcome: "verified", message: "done" },
+        engineer: { agentName: "Engineer", markdown: "# report two", completedOrder: 2 },
+        reviewer: null,
+    });
+    const third = block.render(80);
+    assert(third !== first, "new report markdown must rebuild the panel");
+    assertEquals(stripAnsi(third.join("\n")).includes("report two"), true);
+});
+
+Deno.test("ValidationHandoffBlock rebuilds report lines after invalidate", () => {
+    const block = new ValidationHandoffBlock({
+        progress: { outcome: "verified", message: "done" },
+        engineer: { agentName: "Engineer", markdown: "# keep me", completedOrder: 1 },
+        reviewer: null,
+    });
+    const before = block.render(80);
+
+    block.invalidate();
+    const after = block.render(80);
+    assertEquals(after, before);
+    assertEquals(stripAnsi(after.join("\n")).includes("keep me"), true);
+});
