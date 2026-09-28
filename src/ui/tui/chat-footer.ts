@@ -261,6 +261,7 @@ const thinkingLevelTheme = new Map([
     ["xhigh", "thinkingXhigh"],
     ["max", "thinkingMax"],
 ]);
+const SNAPSHOT_WINDOW_MS = 500;
 function getThinkingThemeToken(level: string): string {
     return thinkingLevelTheme.get(level) || "thinkingOff";
 }
@@ -274,6 +275,27 @@ export function createChatFooterController(options: CreateChatFooterControllerOp
     let ctrlCPendingExit = false;
     let ctrlCPendingTimer: ReturnType<typeof setTimeout> | null = null;
     const footerBranchCache = new Map<string, string>();
+    // Frames re-read the session snapshot per keystroke; frames inside a short
+    // TTL window share one rebuild, and session events drop it. Rebound to the
+    // current RunWield Session in rebindSession.
+    const snapshotWindow: {
+        snapshot: FooterRuntimeSnapshot | null;
+        readAt: number;
+        cached: boolean;
+    } = { snapshot: null, readAt: 0, cached: false };
+    const readSnapshot = (): FooterRuntimeSnapshot | null => {
+        if (snapshotWindow.cached && Date.now() - snapshotWindow.readAt < SNAPSHOT_WINDOW_MS) {
+            return snapshotWindow.snapshot;
+        }
+        snapshotWindow.snapshot = options.runtime.getSessionSnapshot(options.getSessionId());
+        snapshotWindow.readAt = Date.now();
+        snapshotWindow.cached = true;
+        return snapshotWindow.snapshot;
+    };
+    const invalidateSnapshotWindow = (): void => {
+        snapshotWindow.cached = false;
+        snapshotWindow.snapshot = null;
+    };
     const getCachedFooterBranch = (branchCwd: string): string => {
         if (!footerBranchCache.has(branchCwd)) {
             footerBranchCache.set(branchCwd, readGitBranchSync(branchCwd) || "unknown");
@@ -288,6 +310,9 @@ export function createChatFooterController(options: CreateChatFooterControllerOp
         runtimeUsage.cacheWrite = 0;
         runtimeUsage.cost = 0;
         unsubscribeRuntimeTelemetry = options.runtime.subscribeSessionEvents(sessionId, (event) => {
+            // Any session event means state may have changed; refresh on the
+            // next frame instead of serving the window's stale snapshot.
+            invalidateSnapshotWindow();
             if (!isUsageEvent(event)) return;
             runtimeUsage.input += event.usage.inputTokens;
             runtimeUsage.output += event.usage.outputTokens;
@@ -318,7 +343,7 @@ export function createChatFooterController(options: CreateChatFooterControllerOp
     const component: Component = {
         invalidate: () => {},
         render: (w: number) => {
-            const snapshot = options.runtime.getSessionSnapshot(options.getSessionId());
+            const snapshot = readSnapshot();
             if (!snapshot) return ["", ctrlCPendingExit ? theme.fg("warning", "Ctrl+C - Press again to exit") : ""];
             const { model, provider, thinkingLevel } = getModelAndProvider(snapshot);
             const modelStr = model
@@ -383,6 +408,7 @@ export function createChatFooterController(options: CreateChatFooterControllerOp
             return ctrlCPendingExit;
         },
         rebindSession(sessionId: string) {
+            invalidateSnapshotWindow();
             attachRuntimeTelemetry(sessionId);
         },
         dispose() {

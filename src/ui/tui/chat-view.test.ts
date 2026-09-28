@@ -585,6 +585,149 @@ Deno.test("chat view keeps settled tool lines cached across a keystroke", async 
     }
 });
 
+Deno.test("chat view shares one session snapshot across idle frames", async () => {
+    const terminal = new VirtualTerminal({ columns: 100, rows: 20 });
+    const tui = new TuiAltScreen(terminal);
+    let snapshotCalls = 0;
+    const view = await createChatView({
+        tui,
+        suppressStartupHeader: true,
+        getSessionId: () => "snapshot-window-session",
+        sessionRuntime: {
+            getSessionSnapshot: () => {
+                snapshotCalls += 1;
+                return { cwd: "/tmp/snapshot-window-fixture", activeModel: {} };
+            },
+        },
+        setActiveModel: () => Promise.resolve({ status: "active" }),
+    });
+    try {
+        tui.start();
+        view.uiAPI.appendUserMessage?.("one");
+        tui.renderNow(true);
+        await terminal.flush();
+        const buildsAfterFirstFrame = snapshotCalls;
+        assert(buildsAfterFirstFrame > 0, "the first frame must read the snapshot");
+
+        tui.renderNow();
+        await terminal.flush();
+        tui.renderNow();
+        await terminal.flush();
+        assertEquals(snapshotCalls, buildsAfterFirstFrame, "idle frames must reuse the windowed snapshot");
+    } finally {
+        view.dispose();
+        tui.stop();
+    }
+});
+
+Deno.test("chat view rebuilds the windowed snapshot when a session event arrives", async () => {
+    const terminal = new VirtualTerminal({ columns: 100, rows: 20 });
+    const tui = new TuiAltScreen(terminal);
+    let snapshotCalls = 0;
+    const eventListeners = new Set<(event: { type: string }) => void>();
+    const view = await createChatView({
+        tui,
+        suppressStartupHeader: true,
+        getSessionId: () => "snapshot-events-session",
+        sessionRuntime: {
+            getSessionSnapshot: () => {
+                snapshotCalls += 1;
+                return { cwd: "/tmp/snapshot-events-fixture", activeModel: {} };
+            },
+            subscribeSessionEvents: (_sessionId, listener) => {
+                eventListeners.add(listener);
+                return () => eventListeners.delete(listener);
+            },
+        },
+        setActiveModel: () => Promise.resolve({ status: "active" }),
+    });
+    try {
+        tui.start();
+        view.uiAPI.appendUserMessage?.("one");
+        tui.renderNow(true);
+        await terminal.flush();
+        const buildsAfterFirstFrame = snapshotCalls;
+
+        for (const listener of eventListeners) listener({ type: "test:event" });
+        tui.renderNow();
+        await terminal.flush();
+        assertEquals(
+            snapshotCalls > buildsAfterFirstFrame,
+            true,
+            "session events must drop the windowed snapshot",
+        );
+    } finally {
+        view.dispose();
+        tui.stop();
+    }
+});
+
+Deno.test("chat view rebinds snapshot invalidation to the replacement session", async () => {
+    const terminal = new VirtualTerminal({ columns: 100, rows: 20 });
+    const tui = new TuiAltScreen(terminal);
+    let sessionId = "snapshot-session-one";
+    let snapshotCalls = 0;
+    const subscriptionsBySession = new Map<string, Set<(event: { type: string }) => void>>();
+    const view = await createChatView({
+        tui,
+        suppressStartupHeader: true,
+        getSessionId: () => sessionId,
+        sessionRuntime: {
+            getSessionSnapshot: () => {
+                snapshotCalls += 1;
+                return { cwd: "/tmp/snapshot-rebind-fixture", activeModel: {} };
+            },
+            subscribeSessionEvents: (boundSessionId, listener) => {
+                const listeners = subscriptionsBySession.get(boundSessionId) ?? new Set();
+                listeners.add(listener);
+                subscriptionsBySession.set(boundSessionId, listeners);
+                return () => listeners.delete(listener);
+            },
+        },
+        setActiveModel: () => Promise.resolve({ status: "active" }),
+    });
+    try {
+        tui.start();
+        view.uiAPI.appendUserMessage?.("one");
+        tui.renderNow(true);
+        await terminal.flush();
+
+        sessionId = "snapshot-session-two";
+        view.resetForSessionReplacement();
+        tui.renderNow();
+        await terminal.flush();
+        assertEquals(
+            (subscriptionsBySession.get("snapshot-session-one")?.size ?? 0) === 0,
+            true,
+            "the retired session's subscription must be released",
+        );
+        assertEquals(
+            (subscriptionsBySession.get("snapshot-session-two")?.size ?? 0) > 0,
+            true,
+            "snapshot invalidation must rebind to the replacement session",
+        );
+
+        const buildsAfterReset = snapshotCalls;
+        for (const listener of subscriptionsBySession.get("snapshot-session-two") ?? []) {
+            listener({ type: "test:event" });
+        }
+        tui.renderNow();
+        await terminal.flush();
+        assertEquals(snapshotCalls > buildsAfterReset, true, "replacement-session events must drop the window");
+
+        const buildsBeforeOldEvent = snapshotCalls;
+        for (const listener of subscriptionsBySession.get("snapshot-session-one") ?? []) {
+            listener({ type: "test:event" });
+        }
+        tui.renderNow();
+        await terminal.flush();
+        assertEquals(snapshotCalls, buildsBeforeOldEvent, "retired-session events must not invalidate");
+    } finally {
+        view.dispose();
+        tui.stop();
+    }
+});
+
 for (const recovery of ["ctrl+l", "focus"] as const) {
     Deno.test(`chat view restores erased input on ${recovery} without losing draft or scroll position`, async () => {
         const terminal = new VirtualTerminal({ columns: 80, rows: 12 });

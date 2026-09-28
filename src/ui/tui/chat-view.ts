@@ -54,6 +54,7 @@ import { TuiAgentMascot } from "./agent-mascot.ts";
 import { mascotPose } from "../mascot/mascot.ts";
 
 const SESSION_SIDEBAR_MIN_WIDTH = 132;
+const SNAPSHOT_WINDOW_MS = 500;
 const MASCOT_RAIL_MIN_WIDTH = 80;
 
 export interface ChatViewSessionSnapshot extends TuiSessionSidebarSnapshot {
@@ -64,6 +65,7 @@ export interface ChatViewSessionSnapshot extends TuiSessionSidebarSnapshot {
 
 export interface ChatViewRuntime {
     getSessionSnapshot(sessionId: string): ChatViewSessionSnapshot | null;
+    subscribeSessionEvents?(sessionId: string, listener: (event: { type: string }) => void): () => void;
 }
 export interface ChatViewOptions {
     tui: TUI;
@@ -321,10 +323,37 @@ async function createChatViewInternal(options: ChatViewOptions): Promise<ChatVie
     const editor = new Editor(tui, getEditorTheme());
     composerContainer.addChild(editor);
     const footerContainer = new Container();
+    // Frames re-read the session snapshot several times per keystroke, and a
+    // rebuild copies session state each time. Keystrokes emit no session
+    // events, so frames inside a short TTL window share one snapshot; any
+    // session event drops it. The event listener is rebound to the current
+    // RunWield Session in resetForSessionReplacement.
+    const snapshotWindow: {
+        snapshot: ChatViewSessionSnapshot | null;
+        readAt: number;
+        cached: boolean;
+    } = { snapshot: null, readAt: 0, cached: false };
+    const readSessionSnapshot = (): ChatViewSessionSnapshot | null => {
+        if (snapshotWindow.cached && Date.now() - snapshotWindow.readAt < SNAPSHOT_WINDOW_MS) {
+            return snapshotWindow.snapshot;
+        }
+        snapshotWindow.snapshot = options.sessionRuntime.getSessionSnapshot(options.getSessionId());
+        snapshotWindow.readAt = Date.now();
+        snapshotWindow.cached = true;
+        return snapshotWindow.snapshot;
+    };
+    const invalidateSnapshot = (): void => {
+        snapshotWindow.cached = false;
+        snapshotWindow.snapshot = null;
+    };
+    let unsubscribeSessionEvents: (() => void) | null = options.sessionRuntime.subscribeSessionEvents?.(
+        options.getSessionId(),
+        () => invalidateSnapshot(),
+    ) ?? null;
     const mascot = new TuiAgentMascot(() => tui.requestRender());
     let mascotAnswering = false;
     const renderMascot = (width: number, compact: boolean) => {
-        const snapshot = options.sessionRuntime.getSessionSnapshot(options.getSessionId());
+        const snapshot = readSessionSnapshot();
         return mascot.render(width, compact, {
             agentName: snapshot?.activeAgentInfo?.agentName || snapshot?.activeAgent || "",
             parentAgentName: snapshot?.activeAgent || undefined,
@@ -358,7 +387,7 @@ async function createChatViewInternal(options: ChatViewOptions): Promise<ChatVie
         },
         render: (w: number) => {
             const availableWidth = Math.max(10, w - 2);
-            const snapshot = options.sessionRuntime.getSessionSnapshot(options.getSessionId());
+            const snapshot = readSessionSnapshot();
             if (w < MASCOT_RAIL_MIN_WIDTH) return container.render(availableWidth);
             const showSidebar = snapshot?.managed && availableWidth >= SESSION_SIDEBAR_MIN_WIDTH;
             const sidebarWidth = showSidebar ? 34 : 22;
@@ -398,7 +427,7 @@ async function createChatViewInternal(options: ChatViewOptions): Promise<ChatVie
         const sidebarArea: Component = {
             invalidate: () => sessionSidebar.invalidate(),
             render: (width: number) => {
-                const snapshot = options.sessionRuntime.getSessionSnapshot(options.getSessionId());
+                const snapshot = readSessionSnapshot();
                 return snapshot?.managed && tui.terminal.columns >= SESSION_SIDEBAR_MIN_WIDTH
                     ? sessionSidebar.render(width, { ...snapshot, validationProgress: liveValidationProgress })
                     : [];
@@ -671,6 +700,15 @@ async function createChatViewInternal(options: ChatViewOptions): Promise<ChatVie
             previewImages.clear();
         },
         resetForSessionReplacement() {
+            // chat-session updates the RunWield Session id before calling this,
+            // so the event listener re-binds to the replacement Session and its
+            // events keep dropping the window.
+            unsubscribeSessionEvents?.();
+            unsubscribeSessionEvents = options.sessionRuntime.subscribeSessionEvents?.(
+                options.getSessionId(),
+                () => invalidateSnapshot(),
+            ) ?? null;
+            invalidateSnapshot();
             mascotAnswering = false;
             pastedImages.length = 0;
             previewImages.clear();
@@ -689,6 +727,8 @@ async function createChatViewInternal(options: ChatViewOptions): Promise<ChatVie
         },
         dispose() {
             disposed = true;
+            unsubscribeSessionEvents?.();
+            unsubscribeSessionEvents = null;
             mascot.dispose();
             for (const surface of artifactReaders) void Promise.resolve(surface.stop()).catch(() => {});
             artifactReaders.clear();
